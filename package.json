@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.7",
+    "@tailwindcss/vite": "^4.1.5",
+    "alpinejs": "^3.14.9",
+    "gsap": "^3.14.2",
+    "tailwindcss": "^4.1.7"
+  }
+}

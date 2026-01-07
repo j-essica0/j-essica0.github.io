@@ -1,1 +1,192 @@
-Hello World
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="en">
+<head>
+
+    <!-- seo -->
+    <title>Jessica Rodgers</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- css -->
+	<link href="/src/assets/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+
+</head>
+
+<body x-cloak x-data="{ loaded : false, openMenu : false }" x-init="setTimeout(() => { loaded = true }, 1000);" class="transition-opacity duration-1000" :class="{ 'opacity-0': ! loaded }">
+    
+    <header role="banner" class="fixed bg-base top-0 left-0 w-full h-[100px] border-b border-solid border-primary px-7 lg:px-10">
+
+        <div class="wrap h-full flex items-center">
+
+            <button type="button" @click="openMenu = true" class="relative before:content-[''] before:block before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-[calc(50%+50px)] before:h-[calc(50%+50px)] lg:order-2">
+
+                <span class="block pointer-events-none h-px w-[35px] bg-primary mb-3 last:mb-0"></span>
+
+                <span class="block pointer-events-none h-px w-[35px] bg-primary mb-3 last:mb-0"></span>
+
+            </button>
+
+            <h1 class="block w-[calc(100%-70px)] text-xl lg:text-3xl"><a href="#" class="flex justify-center lg:justify-start">Jessica</span></a></h1>
+
+        </div>
+
+    </header>
+
+    <menu class="fixed top-0 left-0 w-full h-[calc(100vh+1px)] z-[999] bg-base p-7 transition-all duration-1000 border-b border-solid border-primary lg:pb-10 lg:pl-10 lg:pt-8 lg:pr-[75px]" :class="{ '-translate-y-full' : ! openMenu }">
+
+        <div class="wrap">
+
+            <button type="button" @click="openMenu = false" class="block relative w-[35px] h-[35px] transition-all duration-500 hover:rotate-45 lg:ml-auto">
+
+                <span class="block absolute top-1/2 left-0 w-full h-px bg-primary rotate-45 -translate-y-1/2"></span>
+
+                <span class="block absolute top-1/2 left-0 w-full h-px bg-primary -rotate-45 -translate-y-1/2"></span>
+
+            </button>
+
+            <!-- <ul class="pt-15">
+
+                <li class="text-xl mb-5 last:mb-0"><a href="#">Link</a></li>
+
+                <li class="text-xl mb-5 last:mb-0"><a href="#">Link</a></li>
+
+                <li class="text-xl mb-5 last:mb-0"><a href="#">Link</a></li>
+
+            </ul> -->
+
+        </div>
+
+    </menu>
+
+    <div class="marquee fixed bottom-0 left-0 w-full h-full max-h-fit z-[2] overflow-hidden" x-init="
+        $nextTick(() => {
+            let marquee = $el.querySelector('.marquee ul');
+            const width = parseInt(window.getComputedStyle(marquee).getPropertyValue('width'),10);
+            let total, clone = 0;
+            let items = marquee.querySelectorAll('li');
+            let reverse = marquee.dataset.reverse;
+            let duration = marquee.dataset.duration;
+            items.forEach(item => {
+                total += item.offsetWidth;
+            });
+            if ( total < window.innerWidth ) {
+                let cloneAmount = Math.round(window.innerWidth / total) + 1;
+                for ( i = 0; i < cloneAmount; i++ ) {
+                    clone = marquee.cloneNode(true);
+                    marquee.parentElement.append(clone);
+                }
+            } else {
+                clone = marquee.cloneNode(true);
+                marquee.parentElement.append(clone);
+            }
+            gsap.fromTo(
+                marquee.parentElement.children,
+                {
+                    x: reverse ? -1 * width : 0,
+                },
+                {
+                    x: reverse ? 0 : -1 * width,
+                    duration: duration,
+                    ease: 'none',
+                    repeat: -1
+                },
+            );
+        });
+    ">
+
+        <div class="marquee h-[37px] leading-[37px]">
+
+            <div class="container max-w-full overflow-hidden flex">
+
+                <ul class="whitespace-nowrap max-w-fit" aria-hidden="true" data-duration="50">
+
+                    <li class="inline-block">
+
+                        <div class="flex items-center">
+
+                            <p class="whitespace-nowrap mx-[9px]">Lorem ipsum dolor sit amet</p>
+
+                            <span class="blockmx-[9px]">✦︎</span>
+
+                        </div>
+
+                    </li>
+
+                    <li class="inline-block">
+
+                        <div class="flex items-center">
+
+                            <p class="whitespace-nowrap mx-[9px]">Lorem ipsum dolor sit amet</p>
+
+                            <span class="blockmx-[9px]">✦︎</span>
+
+                        </div>
+
+                    </li>
+
+                    <li class="inline-block">
+
+                        <div class="flex items-center">
+
+                            <p class="whitespace-nowrap mx-[9px]">Lorem ipsum dolor sit amet</p>
+
+                            <span class="blockmx-[9px]">✦︎</span>
+
+                        </div>
+
+                    </li>
+
+                    <li class="inline-block">
+
+                        <div class="flex items-center">
+
+                            <p class="whitespace-nowrap mx-[9px]">Lorem ipsum dolor sit amet</p>
+
+                            <span class="blockmx-[9px]">✦︎</span>
+
+                        </div>
+
+                    </li>
+
+                    <li class="inline-block">
+
+                        <div class="flex items-center">
+
+                            <p class="whitespace-nowrap mx-[9px]">Lorem ipsum dolor sit amet</p>
+
+                            <span class="blockmx-[9px]">✦︎</span>
+
+                        </div>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- <section class="h-[calc(100vh-100px)] mt-[100px] pr-7 pb-7 pl-10">
+
+        <div class="wrap h-full flex items-end justify-end">
+
+            <div class="text-right max-w-[600px]">
+
+                <h2 class="uppercase text-6xl mb-4">Lorem</h2>
+
+                <p class="text-2xl tracking-[0.05em]">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+
+            </div>
+
+        </div>
+
+    </section> -->
+
+    <!-- scripts -->
+    <script type="module" src="/src/assets/js/site.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script>
+
+</body>
+</html>
