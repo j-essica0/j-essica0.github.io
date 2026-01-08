@@ -168,21 +168,61 @@
 
     </div>
 
-    <!-- <section class="h-[calc(100vh-100px)] mt-[100px] pr-7 pb-7 pl-10">
+    <section class="text mt-[100px] h-[calc(100vh-100px)] flex items-center px-7 max-w-[1024px] lg:px-10">
 
-        <div class="wrap h-full flex items-end justify-end">
+        <div class="wrap">
 
-            <div class="text-right max-w-[600px]">
+            <h2 class="text-4xl mb-5 lg:text-6xl">Lorem ipsum dolor sit amet</h2>
 
-                <h2 class="uppercase text-6xl mb-4">Lorem</h2>
+        </div>
 
-                <p class="text-2xl tracking-[0.05em]">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+    </section>
+
+    </section>
+    
+    <section class="image-preview h-[calc(100vh-100px)] flex items-center px-7 max-w-[1024px] lg:px-10">
+
+        <div class="wrap w-full">
+
+            <div x-data="{ hovered : false }" @mouseenter="hovered = true" @mouseleave="hovered = false" class="block relative w-full border-t border-b border-solid border-primary h-20 [&+div]:border-t-0 lg:h-30">
+
+                <a href="#" class="block w-full h-full flex items-center">
+
+                    <p class="lg:text-2xl">Lorem ipsum</p>
+
+                    <div class="image pointer-events-none w-[200px] h-[200px] bg-primary/10 absolute top-1/2 right-3 -translate-y-1/2 transition-opacity duration-500 lg:w-100 lg:h-100" :class="{ 'opacity-0' : ! hovered }"></div>
+
+                </a>
+
+            </div>
+
+            <div x-data="{ hovered : false }" @mouseenter="hovered = true" @mouseleave="hovered = false" class="block relative w-full border-t border-b border-solid border-primary h-20 [&+div]:border-t-0 lg:h-30">
+
+                <a href="#" class="block w-full h-full flex items-center">
+
+                    <p class="lg:text-2xl">Lorem ipsum</p>
+
+                    <div class="image pointer-events-none w-[200px] h-[200px] bg-primary/10 absolute top-1/2 right-3 -translate-y-1/2 transition-opacity duration-500 lg:w-100 lg:h-100" :class="{ 'opacity-0' : ! hovered }"></div>
+
+                </a>
+
+            </div>
+
+            <div x-data="{ hovered : false }" @mouseenter="hovered = true" @mouseleave="hovered = false" class="block relative w-full border-t border-b border-solid border-primary h-20 [&+div]:border-t-0 lg:h-30">
+
+                <a href="#" class="block w-full h-full flex items-center">
+
+                    <p class="lg:text-2xl">Lorem ipsum</p>
+
+                    <div class="image pointer-events-none w-[200px] h-[200px] bg-primary/10 absolute top-1/2 right-3 -translate-y-1/2 transition-opacity duration-500 lg:w-100 lg:h-100" :class="{ 'opacity-0' : ! hovered }"></div>
+
+                </a>
 
             </div>
 
         </div>
 
-    </section> -->
+    </section>
 
     <!-- scripts -->
     <script type="module" src="/src/assets/js/site.js"></script>
