@@ -13,211 +13,222 @@
 </head>
 
 <body x-cloak x-data="{ loaded : false, openMenu : false }" x-init="setTimeout(() => { loaded = true }, 1000);" class="transition-opacity duration-1000" :class="{ 'opacity-0': ! loaded }">
-    
-    <header role="banner" class="fixed bg-base top-0 left-0 w-full h-[100px] border-b border-solid border-primary px-7 lg:px-10">
 
-        <div class="wrap h-full flex items-center">
+    <header role="banner" class="fixed top-0 left-0 w-full p-5 z-[9999] lg:p-12.5">
 
-            <button type="button" @click="openMenu = true" class="relative before:content-[''] before:block before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:w-[calc(50%+50px)] before:h-[calc(50%+50px)] lg:order-2">
+        <div class="wrap flex justify-end">
 
-                <span class="block pointer-events-none h-px w-[35px] bg-primary mb-3 last:mb-0"></span>
+            <button type="button" @click="openMenu = ! openMenu" class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl">Menu</button>
 
-                <span class="block pointer-events-none h-px w-[35px] bg-primary mb-3 last:mb-0"></span>
+            <!-- <menu>
 
-            </button>
+                <a href="#">Work</a>
 
-            <h1 class="block w-[calc(100%-70px)] text-xl lg:text-3xl"><a href="#" class="flex justify-center lg:justify-start">Jessica</span></a></h1>
+                <a href="#">About</a>
+
+            </menu> -->
 
         </div>
 
     </header>
 
-    <menu class="fixed top-0 left-0 w-full h-[calc(100vh+1px)] z-[999] bg-base p-7 transition-all duration-1000 border-b border-solid border-primary lg:pb-10 lg:pl-10 lg:pt-8 lg:pr-[75px]" :class="{ '-translate-y-full' : ! openMenu }">
+    <section id="hero" class="h-screen flex items-end pb-25 px-5 overflow-hidden md:overflow-visible lg:px-12.5">
 
         <div class="wrap">
 
-            <button type="button" @click="openMenu = false" class="block relative w-[35px] h-[35px] transition-all duration-500 hover:rotate-45 lg:ml-auto">
+            <div class="relative">
 
-                <span class="block absolute top-1/2 left-0 w-full h-px bg-primary rotate-45 -translate-y-1/2"></span>
+                <figure class="absolute -top-[25px] left-[15px] md:-top-[60px] md:-left-[100px]"><img src="src/assets/images/icons/blue-asterisk.svg" class="block w-auto h-[78px] md:h-[217px]"></figure>
 
-                <span class="block absolute top-1/2 left-0 w-full h-px bg-primary -rotate-45 -translate-y-1/2"></span>
+                <figure class="absolute -bottom-12.5 -right-12.5 md:-bottom-[150px] md:-right-[90px]"><img src="src/assets/images/icons/pink-asterisk.svg" class="block w-auto h-[140px] md:h-[346px]"></figure>
 
-            </button>
-
-            <!-- <ul class="pt-15">
-
-                <li class="text-xl mb-5 last:mb-0"><a href="#">Link</a></li>
-
-                <li class="text-xl mb-5 last:mb-0"><a href="#">Link</a></li>
-
-                <li class="text-xl mb-5 last:mb-0"><a href="#">Link</a></li>
-
-            </ul> -->
-
-        </div>
-
-    </menu>
-
-    <div class="marquee fixed bottom-0 left-0 w-full h-full max-h-fit z-[2] overflow-hidden" x-init="
-        $nextTick(() => {
-            let marquee = $el.querySelector('.marquee ul');
-            const width = parseInt(window.getComputedStyle(marquee).getPropertyValue('width'),10);
-            let total, clone = 0;
-            let items = marquee.querySelectorAll('li');
-            let reverse = marquee.dataset.reverse;
-            let duration = marquee.dataset.duration;
-            items.forEach(item => {
-                total += item.offsetWidth;
-            });
-            if ( total < window.innerWidth ) {
-                let cloneAmount = Math.round(window.innerWidth / total) + 1;
-                for ( i = 0; i < cloneAmount; i++ ) {
-                    clone = marquee.cloneNode(true);
-                    marquee.parentElement.append(clone);
-                }
-            } else {
-                clone = marquee.cloneNode(true);
-                marquee.parentElement.append(clone);
-            }
-            gsap.fromTo(
-                marquee.parentElement.children,
-                {
-                    x: reverse ? -1 * width : 0,
-                },
-                {
-                    x: reverse ? 0 : -1 * width,
-                    duration: duration,
-                    ease: 'none',
-                    repeat: -1
-                },
-            );
-        });
-    ">
-
-        <div class="marquee h-[37px] leading-[37px]">
-
-            <div class="container max-w-full overflow-hidden flex">
-
-                <ul class="whitespace-nowrap max-w-fit" aria-hidden="true" data-duration="50">
-
-                    <li class="inline-block">
-
-                        <div class="flex items-center">
-
-                            <p class="whitespace-nowrap mx-[9px]">Lorem ipsum dolor sit amet</p>
-
-                            <span class="blockmx-[9px]">✦︎</span>
-
-                        </div>
-
-                    </li>
-
-                    <li class="inline-block">
-
-                        <div class="flex items-center">
-
-                            <p class="whitespace-nowrap mx-[9px]">Lorem ipsum dolor sit amet</p>
-
-                            <span class="blockmx-[9px]">✦︎</span>
-
-                        </div>
-
-                    </li>
-
-                    <li class="inline-block">
-
-                        <div class="flex items-center">
-
-                            <p class="whitespace-nowrap mx-[9px]">Lorem ipsum dolor sit amet</p>
-
-                            <span class="blockmx-[9px]">✦︎</span>
-
-                        </div>
-
-                    </li>
-
-                    <li class="inline-block">
-
-                        <div class="flex items-center">
-
-                            <p class="whitespace-nowrap mx-[9px]">Lorem ipsum dolor sit amet</p>
-
-                            <span class="blockmx-[9px]">✦︎</span>
-
-                        </div>
-
-                    </li>
-
-                    <li class="inline-block">
-
-                        <div class="flex items-center">
-
-                            <p class="whitespace-nowrap mx-[9px]">Lorem ipsum dolor sit amet</p>
-
-                            <span class="blockmx-[9px]">✦︎</span>
-
-                        </div>
-
-                    </li>
-
-                </ul>
+                <h2 class="relative z-[1] font-black uppercase text-right text-[3.375rem] leading-[0.8] -tracking-[0.03em] md:text-left md:text-[7.5rem] lg:text-[9.6875rem] lg:leading-[0.72]">Crafting the digital front door</h2>
 
             </div>
-
-        </div>
-
-    </div>
-
-    <section class="text mt-[100px] h-[calc(100vh-100px)] flex items-center px-7 max-w-[1024px] lg:px-10">
-
-        <div class="wrap">
-
-            <h2 class="text-4xl mb-5 lg:text-6xl">Lorem ipsum dolor sit amet</h2>
 
         </div>
 
     </section>
 
+    <section id="work" class="h-screen">
+
+        <div class="wrap">
+
+            <div class="filters flex whitespace-nowrap gap-5 items-center overflow-x-scroll overflow-y-hidden px-5 mb-5 lg:px-12.5 lg:mb-12.5">
+
+                <button type="button" class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl">Web</button>
+
+                <button type="button" class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl">Digital</button>
+
+                <button type="button" class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl">Traditional</button>
+
+            </div>
+
+            <div class="swiper pointer-events-none" x-init="new Swiper($el, {
+                breakpoints: {
+                    1024: {
+                        spaceBetween: 50,
+                        slidesOffsetBefore: 50,
+                        slidesOffsetAfter: 50,
+                        initialSlide: 0,
+                    },
+                    768: {
+                        slidesPerView: 2.5,
+                        initialSlide: 0,
+                        spaceBetween: 20,
+                        slidesOffsetBefore: 20,
+                        slidesOffsetAfter: 20,
+                    },
+                    0: {
+                        loop: true,
+                        initialSlide: 2,
+                        speed: 10000,
+                        spaceBetween: 20,
+                        slidesOffsetBefore: 20,
+                        slidesOffsetAfter: 20,
+                        autoplay: {
+                            delay: 1,
+                            disableOnInteraction: false,
+                        },
+                    },
+                },
+            });">
+
+                <div class="swiper-wrapper !ease-linear">
+
+                    <div class="swiper-slide !h-auto min-h-[481px] max-h-[481px] lg:min-h-[581px] lg:max-h-[581px] lg:max-w-[380px]">
+
+                        <div class="card bg-base p-5 border border-solid border-primary rounded-[25px] h-full">
+
+                            <div class="relative h-full">
+
+                                <div class="image relative h-0 overflow-hidden pb-[100%] rounded-[15px] bg-primary"></div>
+
+                                <div class="content h-full mt-2.5 lg:mt-5">
+
+                                    <h2 class="text-3xl max-w-[235px]">Software Engineer Portfolio Site</h2>
+
+                                    <div class="flex items-center justify-between absolute bottom-0 right-0 w-full">
+
+                                        <a href="#" class="flex pointer-events-auto items-center w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl">Visit<figure class="ml-2"><img src="src/assets/images/icons/external.svg"></figure></a>
+
+                                        <a href="#" class="flex pointer-events-auto items-center w-full max-w-fit ml-auto h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl">Navigate<figure class="ml-2"><img src="src/assets/images/icons/internal.svg"></figure></a>
+                                    
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="swiper-slide !h-auto min-h-[481px] max-h-[481px] lg:min-h-[581px] lg:max-h-[581px] lg:max-w-[380px]">
+
+                        <div class="card bg-base p-5 border border-solid border-primary rounded-[25px] h-full">
+
+                            <div class="relative h-full">
+
+                                <div class="image relative h-0 overflow-hidden pb-[100%] rounded-[15px] bg-white"></div>
+
+                                <div class="content h-full mt-2.5 lg:mt-5">
+
+                                    <h2 class="text-3xl max-w-[235px]">Software Engineer Portfolio Site</h2>
+                                    
+                                    <div class="flex items-center justify-between absolute bottom-0 right-0 w-full">
+
+                                        <a href="#" class="flex pointer-events-auto items-center w-full max-w-fit ml-auto h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl">Navigate<figure class="ml-2"><img src="src/assets/images/icons/internal.svg"></figure></a>
+                                    
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="swiper-slide !h-auto min-h-[481px] max-h-[481px] lg:min-h-[581px] lg:max-h-[581px] lg:max-w-[380px]">
+
+                        <div class="card bg-base p-5 border border-solid border-primary rounded-[25px] h-full">
+
+                            <div class="relative h-full">
+
+                                <div class="image relative h-0 overflow-hidden pb-[100%] rounded-[15px] bg-primary/10"></div>
+
+                                <div class="content h-full mt-2.5 lg:mt-5">
+
+                                    <h2 class="text-3xl max-w-[235px]">Software Engineer Portfolio Site</h2>
+
+                                    <div class="flex items-center justify-between absolute bottom-0 right-0 w-full">
+
+                                        <a href="#" class="flex pointer-events-auto items-center w-full max-w-fit ml-auto h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl">Navigate<figure class="ml-2"><img src="src/assets/images/icons/internal.svg"></figure></a>
+                                    
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </section>
-    
-    <section class="image-preview h-[calc(100vh-100px)] flex items-center px-7 max-w-[1024px] lg:px-10">
 
-        <div class="wrap w-full">
+    <section id="about" class="h-screen px-5 mt-12.5 lg:px-12.5">
 
-            <div x-data="{ hovered : false }" @mouseenter="hovered = true" @mouseleave="hovered = false" class="block relative w-full border-t border-b border-solid border-primary h-20 [&+div]:border-t-0 lg:h-30">
+        <div class="wrap max-w-[768px] mx-auto h-full">
 
-                <a href="#" class="block w-full h-full flex items-center">
+            <div class="md:flex md:items-center md:justify-center md:gap-x-12.5 md:h-full">
 
-                    <p class="lg:text-2xl">Lorem ipsum</p>
+                <div class="block w-full h-0 pb-[100%] overflow-hidden bg-base border border-solid border-primary rounded-[25px] md:pb-[50%]"></div>
 
-                    <div class="image pointer-events-none w-[200px] h-[200px] bg-primary/10 absolute top-1/2 right-3 -translate-y-1/2 transition-opacity duration-500 lg:w-100 lg:h-100" :class="{ 'opacity-0' : ! hovered }"></div>
+                <div class="content mt-5">
 
-                </a>
+                    <h2 class="text-3xl">Frontend Developer and Designer based in Belfast.</h2>
+
+                    <div class="skills flex flex-wrap items-center gap-2.5 mt-2.5">
+
+                        <p class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl">HTML</p>
+
+                        <p class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl">CSS</p>
+
+                        <p class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl">JavaScript</p>
+
+                        <p class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl">Figma</p>
+
+                        <p class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl">Adobe Illustrator</p>
+
+                    </div>
+
+                </div>
 
             </div>
 
-            <div x-data="{ hovered : false }" @mouseenter="hovered = true" @mouseleave="hovered = false" class="block relative w-full border-t border-b border-solid border-primary h-20 [&+div]:border-t-0 lg:h-30">
+        </div>
 
-                <a href="#" class="block w-full h-full flex items-center">
+    </section>
 
-                    <p class="lg:text-2xl">Lorem ipsum</p>
+    <section id="social" class="flex items-center justify-end p-5 mt-2.5 lg:p-5 lg:mt-0">
 
-                    <div class="image pointer-events-none w-[200px] h-[200px] bg-primary/10 absolute top-1/2 right-3 -translate-y-1/2 transition-opacity duration-500 lg:w-100 lg:h-100" :class="{ 'opacity-0' : ! hovered }"></div>
+        <div class="wrap">
 
-                </a>
+            <div class="flex items-center gap-3">
 
-            </div>
+                <a href="https://www.linkedin.com/in/jessicaaaa/" class="text-[0px]" aria-label="Go to LinkedIn"><figure><img src="src/assets/images/icons/linkedin.svg"></figure>LinkedIn</a>
 
-            <div x-data="{ hovered : false }" @mouseenter="hovered = true" @mouseleave="hovered = false" class="block relative w-full border-t border-b border-solid border-primary h-20 [&+div]:border-t-0 lg:h-30">
+                <a href="https://github.com/j-essica0" class="text-[0px]" aria-label="Go to GitHub"><figure><img src="src/assets/images/icons/github.svg"></figure>GitHub</a>
 
-                <a href="#" class="block w-full h-full flex items-center">
-
-                    <p class="lg:text-2xl">Lorem ipsum</p>
-
-                    <div class="image pointer-events-none w-[200px] h-[200px] bg-primary/10 absolute top-1/2 right-3 -translate-y-1/2 transition-opacity duration-500 lg:w-100 lg:h-100" :class="{ 'opacity-0' : ! hovered }"></div>
-
-                </a>
-
+                <a href="https://www.behance.net/j_essica" class="text-[0px]" aria-label="Go to Behance"><figure><img src="src/assets/images/icons/behance.svg"></figure>Behance</a>
             </div>
 
         </div>
@@ -227,6 +238,7 @@
     <!-- scripts -->
     <script type="module" src="/src/assets/js/site.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 
 </body>
 </html>
