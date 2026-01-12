@@ -14,7 +14,7 @@
 
 <body x-cloak x-data="{ loaded : false, openMenu : false }" x-init="setTimeout(() => { loaded = true }, 1000);" class="transition-opacity duration-1000" :class="{ 'opacity-0': ! loaded }">
 
-    <div class="absolute animate-spin top-0 left-0 mix-blend-difference" @mousemove.document="
+    <div class="absolute animate-spin top-0 left-0" @mousemove.document="
         $el.style.left = $event.pageX + 'px';
         $el.style.top = $event.pageY + 'px';
     ">
