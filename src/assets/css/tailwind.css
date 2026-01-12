@@ -32,6 +32,7 @@
 
 html, body, * {
     scroll-behavior: smooth;
+    cursor: none;
 }
 
 body {
@@ -66,6 +67,10 @@ img {
 
 button {
     cursor: pointer;
+}
+
+.animate-spin {
+    animation-duration: 20s;
 }
 
 /* forms */

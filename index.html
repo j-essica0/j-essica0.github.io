@@ -14,6 +14,15 @@
 
 <body x-cloak x-data="{ loaded : false, openMenu : false }" x-init="setTimeout(() => { loaded = true }, 1000);" class="transition-opacity duration-1000" :class="{ 'opacity-0': ! loaded }">
 
+    <div class="absolute animate-spin top-0 left-0 mix-blend-difference" @mousemove.document="
+        $el.style.left = $event.pageX + 'px';
+        $el.style.top = $event.pageY + 'px';
+    ">
+        
+        <figure><img src="/src/assets/images/icons/cursor.svg"></figure>
+    
+    </div>
+
     <header role="banner" class="fixed top-0 left-0 w-full p-5 z-[9999] lg:p-12.5">
 
         <div class="wrap flex justify-end">
@@ -32,17 +41,25 @@
 
     </header>
 
-    <section id="hero" class="h-screen flex items-end pb-25 px-5 overflow-hidden md:overflow-visible lg:px-12.5">
+    <section id="hero" class="h-screen flex items-end transition-all duration-500 pb-12.5 px-5 overflow-hidden md:overflow-visible lg:px-12.5">
 
-        <div class="wrap">
+        <div class="wrap w-full">
 
             <div class="relative">
 
-                <figure class="absolute -top-[25px] left-[15px] md:-top-[60px] md:-left-[100px]"><img src="src/assets/images/icons/blue-asterisk.svg" class="block w-auto h-[78px] md:h-[217px]"></figure>
+                <figure class="absolute -top-[6.67vw] -left-[8vw] animate-spin max-w-[20.8vw]"><img src="src/assets/images/icons/blue-asterisk.svg"></figure>
 
-                <figure class="absolute -bottom-12.5 -right-12.5 md:-bottom-[150px] md:-right-[90px]"><img src="src/assets/images/icons/pink-asterisk.svg" class="block w-auto h-[140px] md:h-[346px]"></figure>
+                <figure class="absolute -bottom-12.5 -right-12.5 animate-spin animate-spin [animation-direction:reverse] max-w-[37.33vw]"><img src="src/assets/images/icons/pink-asterisk.svg"></figure>
 
-                <h2 class="relative z-[1] font-black uppercase text-right text-[3.375rem] leading-[0.8] -tracking-[0.03em] md:text-left md:text-[7.5rem] lg:text-[9.6875rem] lg:leading-[0.72]">Crafting the digital front door</h2>
+                <div>
+
+                    <h2 class="relative z-[1] font-black uppercase -tracking-[0.03em] text-[15vw]/[0.8]">Crafting</h2>
+
+                    <h2 class="relative z-[1] font-black uppercase -tracking-[0.03em] text-[15vw]/[0.8]">the digital</h2>
+
+                    <h2 class="relative z-[1] font-black uppercase -tracking-[0.03em] text-[15vw]/[0.8]">front door</h2>
+
+                </div>
 
             </div>
 
@@ -50,7 +67,7 @@
 
     </section>
 
-    <section id="work" class="h-screen">
+    <section id="work">
 
         <div class="wrap">
 
@@ -64,7 +81,7 @@
 
             </div>
 
-            <div class="swiper pointer-events-none" x-init="new Swiper($el, {
+            <div class="swiper" x-init="new Swiper($el, {
                 breakpoints: {
                     1024: {
                         spaceBetween: 50,
@@ -82,21 +99,16 @@
                     0: {
                         loop: true,
                         initialSlide: 2,
-                        speed: 10000,
                         spaceBetween: 20,
                         slidesOffsetBefore: 20,
                         slidesOffsetAfter: 20,
-                        autoplay: {
-                            delay: 1,
-                            disableOnInteraction: false,
-                        },
                     },
                 },
             });">
 
-                <div class="swiper-wrapper !ease-linear">
+                <div class="swiper-wrapper">
 
-                    <div class="swiper-slide !h-auto min-h-[481px] max-h-[481px] lg:min-h-[581px] lg:max-h-[581px] lg:max-w-[380px]">
+                    <div class="swiper-slide !h-auto min-h-[481px] lg:min-h-[581px] lg:max-w-[380px]">
 
                         <div class="card bg-base p-5 border border-solid border-primary rounded-[25px] h-full">
 
@@ -124,7 +136,7 @@
 
                     </div>
 
-                    <div class="swiper-slide !h-auto min-h-[481px] max-h-[481px] lg:min-h-[581px] lg:max-h-[581px] lg:max-w-[380px]">
+                    <div class="swiper-slide !h-auto min-h-[481px] lg:min-h-[581px] lg:max-w-[380px]">
 
                         <div class="card bg-base p-5 border border-solid border-primary rounded-[25px] h-full">
 
@@ -150,7 +162,7 @@
 
                     </div>
 
-                    <div class="swiper-slide !h-auto min-h-[481px] max-h-[481px] lg:min-h-[581px] lg:max-h-[581px] lg:max-w-[380px]">
+                    <div class="swiper-slide !h-auto min-h-[481px] lg:min-h-[581px] lg:max-w-[380px]">
 
                         <div class="card bg-base p-5 border border-solid border-primary rounded-[25px] h-full">
 
