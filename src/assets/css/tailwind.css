@@ -24,6 +24,8 @@
     --color-black: rgba(10, 10, 10, 1);
     --color-base: rgba(249, 248, 244, 1);
     --color-primary: rgba(31, 31, 31, 1);
+    --color-pink: rgba(255, 193, 235, 1);
+    --color-blue: rgba(193, 242, 255, 1);
 
     /* fonts */
     --font-body: "Overused Grotesk Book";
@@ -32,7 +34,6 @@
 
 html, body, * {
     scroll-behavior: smooth;
-    cursor: none;
 }
 
 body {
@@ -65,10 +66,6 @@ img {
     display: block;
 }
 
-button {
-    cursor: pointer;
-}
-
 .animate-spin {
     animation-duration: 20s;
 }
@@ -84,4 +81,8 @@ input, textarea, select {
 
 /* desktop */
 @media (min-width: 1024px) {
+    
+    html, body, * {
+        cursor: none;
+    }
 }
