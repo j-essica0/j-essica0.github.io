@@ -19,15 +19,15 @@
         $el.style.top = $event.pageY + 'px';
     ">
         
-        <figure><img src="/src/assets/images/icons/cursor-light.svg"></figure>
+        <figure><img src="/src/assets/images/icons/cursor-light.svg" class="block w-[19px] h-[19px] max-w-[unset]"></figure>
     
     </div>
 
-    <header role="banner" class="fixed top-0 left-0 w-full p-5 z-[9999] lg:p-12.5">
+    <header role="banner" class="fixed top-0 right-0 w-full p-5 z-[9999] max-w-fit lg:p-12.5">
 
         <div class="wrap flex justify-end">
 
-            <button type="button" @click="openMenu = ! openMenu" class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl">Menu</button>
+            <button type="button" @click="openMenu = ! openMenu" class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Menu</button>
 
             <!-- <menu>
 
@@ -143,17 +143,25 @@
 
     </section>
 
-    <section id="work">
+    <section id="work" x-data="{ filter : 'all' }">
 
         <div class="wrap">
 
             <div class="filters flex whitespace-nowrap gap-5 items-center overflow-x-scroll overflow-y-hidden px-5 mb-5 lg:px-12.5 lg:mb-12.5">
 
-                <button type="button" class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl">Web</button>
+                <button id="web" type="button" @click="filter = $el.id" class="block relative w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Web</button>
 
-                <button type="button" class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl">Digital</button>
+                <button id="digital" type="button" @click="filter = $el.id" class="block relative w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Digital</button>
 
-                <button type="button" class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl">Traditional</button>
+                <button id="traditional" type="button" @click="filter = $el.id" class="block relative w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Traditional</button>
+
+                <button id="all" type="button" @click="filter = $el.id" x-show="filter != 'all'" x-transition.opacity.duration.300ms class="block relative w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500">
+
+                    <span class="block w-px h-5 bg-primary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-45"></span>
+
+                    <span class="block w-px h-5 bg-primary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-45"></span>
+
+                </button>
 
             </div>
 
@@ -187,7 +195,7 @@
 
                 <div class="swiper-wrapper lg:!grid lg:grid-cols-3 lg:gap-12.5">
 
-                    <div class="swiper-slide !h-auto min-h-[481px] max-w-[380px] lg:min-h-[581px] lg:max-w-[unset]">
+                    <div id="web" x-show="filter == $el.id || filter == 'all'" class="swiper-slide !h-auto min-h-[481px] max-w-[380px] lg:min-h-[581px] lg:max-w-[unset]">
 
                         <div class="card bg-base p-5 border border-solid border-primary rounded-[25px] h-full">
 
@@ -201,9 +209,9 @@
 
                                     <div class="flex items-center justify-between absolute bottom-0 right-0 w-full lg:relative lg:pt-5">
 
-                                        <a href="https://leeoconnell.co.uk" class="flex pointer-events-auto items-center w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl">Visit<figure class="ml-2"><img src="src/assets/images/icons/external.svg"></figure></a>
+                                        <a href="https://leeoconnell.co.uk" class="flex pointer-events-auto items-center w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Visit<figure class="ml-2"><img src="src/assets/images/icons/external.svg"></figure></a>
 
-                                        <a href="#" class="flex pointer-events-auto items-center w-full max-w-fit ml-auto h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl">Navigate<figure class="ml-2"><img src="src/assets/images/icons/internal.svg"></figure></a>
+                                        <a href="#" class="flex pointer-events-auto items-center w-full max-w-fit ml-auto h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Navigate<figure class="ml-2"><img src="src/assets/images/icons/internal.svg"></figure></a>
                                     
                                     </div>
 
@@ -215,7 +223,7 @@
 
                     </div>
 
-                    <div class="swiper-slide !h-auto min-h-[481px] max-w-[380px] lg:min-h-[581px] lg:max-w-[unset]">
+                    <div id="digital" x-show="filter == $el.id || filter == 'all'" class="swiper-slide !h-auto min-h-[481px] max-w-[380px] lg:min-h-[581px] lg:max-w-[unset]">
 
                         <div class="card bg-base p-5 border border-solid border-primary rounded-[25px] h-full">
 
@@ -225,11 +233,11 @@
 
                                 <div class="content h-full max-h-fit mt-2.5 lg:mt-5">
 
-                                    <h2 class="text-3xl max-w-[235px]">Software Engineer Portfolio Site</h2>
+                                    <h2 class="text-3xl max-w-[235px]">Digital Illustration</h2>
                                     
                                     <div class="flex items-center justify-between absolute bottom-0 right-0 w-full lg:relative lg:pt-5">
 
-                                        <a href="#" class="flex pointer-events-auto items-center w-full max-w-fit ml-auto h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl">Navigate<figure class="ml-2"><img src="src/assets/images/icons/internal.svg"></figure></a>
+                                        <a href="#" class="flex pointer-events-auto items-center w-full max-w-fit ml-auto h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Navigate<figure class="ml-2"><img src="src/assets/images/icons/internal.svg"></figure></a>
                                     
                                     </div>
 
@@ -241,7 +249,7 @@
 
                     </div>
 
-                    <div class="swiper-slide !h-auto min-h-[481px] max-w-[380px] lg:min-h-[581px] lg:max-w-[unset]">
+                    <div id="traditional" x-show="filter == $el.id || filter == 'all'" class="swiper-slide !h-auto min-h-[481px] max-w-[380px] lg:min-h-[581px] lg:max-w-[unset]">
 
                         <div class="card bg-base p-5 border border-solid border-primary rounded-[25px] h-full">
 
@@ -251,11 +259,11 @@
 
                                 <div class="content h-full max-h-fit mt-2.5 lg:mt-5">
 
-                                    <h2 class="text-3xl max-w-[235px]">Software Engineer Portfolio Site</h2>
+                                    <h2 class="text-3xl max-w-[235px]">Traditional Illustration</h2>
 
                                     <div class="flex items-center justify-between absolute bottom-0 right-0 w-full lg:relative lg:pt-5">
 
-                                        <a href="#" class="flex pointer-events-auto items-center w-full max-w-fit ml-auto h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl">Navigate<figure class="ml-2"><img src="src/assets/images/icons/internal.svg"></figure></a>
+                                        <a href="#" class="flex pointer-events-auto items-center w-full max-w-fit ml-auto h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Navigate<figure class="ml-2"><img src="src/assets/images/icons/internal.svg"></figure></a>
                                     
                                     </div>
 
@@ -267,7 +275,7 @@
 
                     </div>
 
-                    <div class="swiper-slide !h-auto min-h-[481px] max-w-[380px] lg:min-h-[581px] lg:max-w-[unset]">
+                    <div id="web" x-show="filter == $el.id || filter == 'all'" class="swiper-slide !h-auto min-h-[481px] max-w-[380px] lg:min-h-[581px] lg:max-w-[unset]">
 
                         <div class="card bg-base p-5 border border-solid border-primary rounded-[25px] h-full">
 
@@ -281,9 +289,9 @@
 
                                     <div class="flex items-center justify-between absolute bottom-0 right-0 w-full lg:relative lg:pt-5">
 
-                                        <a href="https://leeoconnell.co.uk" class="flex pointer-events-auto items-center w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl">Visit<figure class="ml-2"><img src="src/assets/images/icons/external.svg"></figure></a>
+                                        <a href="https://leeoconnell.co.uk" class="flex pointer-events-auto items-center w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Visit<figure class="ml-2"><img src="src/assets/images/icons/external.svg"></figure></a>
 
-                                        <a href="#" class="flex pointer-events-auto items-center w-full max-w-fit ml-auto h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl">Navigate<figure class="ml-2"><img src="src/assets/images/icons/internal.svg"></figure></a>
+                                        <a href="#" class="flex pointer-events-auto items-center w-full max-w-fit ml-auto h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Navigate<figure class="ml-2"><img src="src/assets/images/icons/internal.svg"></figure></a>
                                     
                                     </div>
 
@@ -295,7 +303,7 @@
 
                     </div>
 
-                    <div class="swiper-slide !h-auto min-h-[481px] max-w-[380px] lg:min-h-[581px] lg:max-w-[unset]">
+                    <div id="digital" x-show="filter == $el.id || filter == 'all'" class="swiper-slide !h-auto min-h-[481px] max-w-[380px] lg:min-h-[581px] lg:max-w-[unset]">
 
                         <div class="card bg-base p-5 border border-solid border-primary rounded-[25px] h-full">
 
@@ -305,11 +313,11 @@
 
                                 <div class="content h-full max-h-fit mt-2.5 lg:mt-5">
 
-                                    <h2 class="text-3xl max-w-[235px]">Software Engineer Portfolio Site</h2>
+                                    <h2 class="text-3xl max-w-[235px]">Digital Illustration</h2>
                                     
                                     <div class="flex items-center justify-between absolute bottom-0 right-0 w-full lg:relative lg:pt-5">
 
-                                        <a href="#" class="flex pointer-events-auto items-center w-full max-w-fit ml-auto h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl">Navigate<figure class="ml-2"><img src="src/assets/images/icons/internal.svg"></figure></a>
+                                        <a href="#" class="flex pointer-events-auto items-center w-full max-w-fit ml-auto h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Navigate<figure class="ml-2"><img src="src/assets/images/icons/internal.svg"></figure></a>
                                     
                                     </div>
 
@@ -321,7 +329,7 @@
 
                     </div>
 
-                    <div class="swiper-slide !h-auto min-h-[481px] max-w-[380px] lg:min-h-[581px] lg:max-w-[unset]">
+                    <div id="traditional" x-show="filter == $el.id || filter == 'all'" class="swiper-slide !h-auto min-h-[481px] max-w-[380px] lg:min-h-[581px] lg:max-w-[unset]">
 
                         <div class="card bg-base p-5 border border-solid border-primary rounded-[25px] h-full">
 
@@ -331,11 +339,11 @@
 
                                 <div class="content h-full max-h-fit mt-2.5 lg:mt-5">
 
-                                    <h2 class="text-3xl max-w-[235px]">Software Engineer Portfolio Site</h2>
+                                    <h2 class="text-3xl max-w-[235px]">Traditional Illustration</h2>
 
                                     <div class="flex items-center justify-between absolute bottom-0 right-0 w-full lg:relative lg:pt-5">
 
-                                        <a href="#" class="flex pointer-events-auto items-center w-full max-w-fit ml-auto h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl">Navigate<figure class="ml-2"><img src="src/assets/images/icons/internal.svg"></figure></a>
+                                        <a href="#" class="flex pointer-events-auto items-center w-full max-w-fit ml-auto h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Navigate<figure class="ml-2"><img src="src/assets/images/icons/internal.svg"></figure></a>
                                     
                                     </div>
 
@@ -361,13 +369,15 @@
 
             <div class="md:flex md:items-center md:justify-center md:gap-x-12.5 md:h-full">
 
-                <div class="block relative w-full h-0 pb-[100%] overflow-hidden bg-base border border-solid border-primary rounded-[25px] md:pb-[50%] lg:pb-[75%]">
+                <div class="block relative w-full h-0 pb-[100%] bg-base rounded-[25px] md:pb-[50%] lg:pb-[75%]">
 
                     <div class="absolute top-0 left-0 w-full h-full">
 
                         <div class="relative w-full h-full flex items-center justify-center">
 
                             <div class="girl relative">
+
+                                <div class="block rounded-full w-full h-full border-2 border-solid border-primary z-1 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
 
                                 <div class="hair">
 
@@ -385,11 +395,39 @@
 
                                     </div>
 
-                                    <div class="eyes flex items-center justify-center gap-x-8 h-full relative z-1">
+                                    <div class="eyes flex items-center justify-center gap-x-8 h-full relative z-1" x-data="{ blink : false }" 
+                                        @mousemove.document="
+                                            const eyes = $el.querySelectorAll('.eye');
+                                            const rect = eyes[0].getBoundingClientRect();
+                                            const eyeCenterX = rect.left + rect.width / 2;
+                                            const eyeCenterY = rect.top + rect.height / 2;
+                                            const angle = Math.atan2($event.clientY - eyeCenterY, $event.clientX - eyeCenterX);
+                                            const maxOffset = 9;
+                                            const maxOffsetUp = 0;
+                                            const maxOffsetDown = 9;
+                                            let offsetX = Math.cos(angle) * maxOffset;
+                                            let offsetY = Math.sin(angle) * maxOffset;
+                                            // clamp vertical movement so pupils don't go too far up
+                                            offsetY = Math.max(-maxOffsetUp, Math.min(offsetY, maxOffsetDown));
 
-                                        <div class="eye bg-base block relative w-10 h-10 rounded-full border border-solid border-primary">
+                                            eyes.forEach(eye => {
+                                                const pupil = eye.querySelector('.pupil');
+                                                pupil.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+                                            });
+                                        "
+                                        x-init="
+                                            setInterval(() => {
+                                                blink = true;
+                                                setTimeout(() => {
+                                                    blink = false;
+                                                }, 200);
+                                            }, 4000);
+                                        "
+                                    >
 
-                                            <div class="eyelid block relative w-full h-1/2 rounded-t-full border-b border-solid border-primary bg-base z-1"></div>
+                                        <div class="eye overflow-hidden bg-base block relative w-10 h-10 rounded-full border border-solid border-primary">
+
+                                            <div :class="{ '!h-full' : blink }" class="eyelid transition-all block relative w-full h-1/2 rounded-t-full border-b border-solid border-primary bg-base z-1 relative"></div>
                                             
                                             <div class="pupil w-5 h-5 rounded-full bg-primary absolute top-[calc(50%+1px)] left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
 
@@ -407,9 +445,9 @@
 
                                         </div>
 
-                                        <div class="eye bg-base block relative w-10 h-10 rounded-full border border-solid border-primary">
+                                        <div class="eye overflow-hidden bg-base block relative w-10 h-10 rounded-full border border-solid border-primary">
 
-                                            <div class="eyelid block relative w-full h-1/2 rounded-t-full border-b border-solid border-primary bg-base z-1"></div>
+                                            <div :class="{ '!h-full' : blink }" class="eyelid transition-all block relative w-full h-1/2 rounded-t-full border-b border-solid border-primary bg-base z-1"></div>
                                             
                                             <div class="pupil w-5 h-5 rounded-full bg-primary absolute top-[calc(50%+1px)] left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
 
@@ -475,17 +513,17 @@
 
                     <h2 class="text-3xl">Frontend Developer and Designer based in Belfast.</h2>
 
-                    <div class="skills flex flex-wrap items-center gap-2.5 mt-2.5 w-[calc(100%+15px)]">
+                    <div class="skills flex flex-wrap items-center gap-2.5 mt-2.5 w-[calc(100%+30px)]">
 
                         <div class="relative">
 
-                            <p class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl">HTML</p>
+                            <p class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">HTML</p>
 
                         </div>
 
                         <div class="relative" x-data="{ hovered : false }">
 
-                            <p @mouseenter="hovered = true" @mouseleave="hovered = false" @click="window.innerWidth < 1024 ? hovered = ! hovered : 0" class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl">CSS*</p>
+                            <p @mouseenter="hovered = true" @mouseleave="hovered = false" @click="window.innerWidth < 1024 ? hovered = ! hovered : 0" class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">CSS*</p>
 
                             <div class="sub absolute -top-[37px] left-1/2 z-[1] transition-all duration-500" :class="{ 'opacity-0 translate-x-2.5' : ! hovered }">
 
@@ -497,7 +535,7 @@
 
                         <div class="relative" x-data="{ hovered : false }">
                             
-                            <p @mouseenter="hovered = true" @mouseleave="hovered = false" @click="window.innerWidth < 1024 ? hovered = ! hovered : 0" class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl">JavaScript*</p>
+                            <p @mouseenter="hovered = true" @mouseleave="hovered = false" @click="window.innerWidth < 1024 ? hovered = ! hovered : 0" class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">JavaScript*</p>
 
                             <div class="sub absolute -top-[37px] left-1/2 z-[1] transition-all duration-500" :class="{ 'opacity-0 translate-x-2.5' : ! hovered }">
 
@@ -509,13 +547,13 @@
 
                         <div class="relative">
 
-                            <p class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl">Figma</p>
+                            <p class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Figma</p>
 
                         </div>
 
                         <div class="relative">
 
-                            <p class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl">Adobe Illustrator</p>
+                            <p class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Adobe Illustrator</p>
 
                         </div>
 
@@ -529,17 +567,17 @@
 
     </section>
 
-    <section id="social" class="flex items-center justify-end p-5 mt-2.5 lg:p-5 lg:mt-0">
+    <section id="social" class="fixed bottom-0 right-0 w-full max-w-fit flex items-center justify-end p-5 mt-2.5 z-[9] lg:p-12.5 lg:mt-0">
 
         <div class="wrap">
 
             <div class="flex items-center gap-3">
 
-                <a href="https://www.linkedin.com/in/jessicaaaa/" class="text-[0px]" aria-label="Go to LinkedIn"><figure><img src="src/assets/images/icons/linkedin.svg"></figure>LinkedIn</a>
+                <a href="https://www.linkedin.com/in/jessicaaaa/" class="text-[0px] group" aria-label="Go to LinkedIn"><figure class="transition-all duration-500 hover:scale-[1.15]"><img src="src/assets/images/icons/linkedin.svg"></figure>LinkedIn</a>
 
-                <a href="https://github.com/j-essica0" class="text-[0px]" aria-label="Go to GitHub"><figure><img src="src/assets/images/icons/github.svg"></figure>GitHub</a>
+                <a href="https://github.com/j-essica0" class="text-[0px] group" aria-label="Go to GitHub"><figure class="transition-all duration-500 hover:scale-[1.15]"><img src="src/assets/images/icons/github.svg"></figure>GitHub</a>
 
-                <a href="https://www.behance.net/j_essica" class="text-[0px]" aria-label="Go to Behance"><figure><img src="src/assets/images/icons/behance.svg"></figure>Behance</a>
+                <a href="https://www.behance.net/j_essica" class="text-[0px] group" aria-label="Go to Behance"><figure class="transition-all duration-500 hover:scale-[1.15]"><img src="src/assets/images/icons/behance.svg"></figure>Behance</a>
             </div>
 
         </div>
