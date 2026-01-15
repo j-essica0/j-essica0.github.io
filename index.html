@@ -12,7 +12,7 @@
 
 </head>
 
-<body x-cloak x-data="{ loaded : false, openMenu : false }" x-init="setTimeout(() => { loaded = true }, 1000);" class="transition-opacity duration-1000" :class="{ 'opacity-0': ! loaded }">
+<body x-cloak x-data="{ loaded : false, hideArrow : false, door : false, window : false }" class="overflow-hidden" x-init="setTimeout(() => { $el.classList.remove('overflow-hidden') }, 8000)">
 
     <div class="absolute animate-spin z-[99999] mix-blend-difference hidden lg:block" @mousemove.document="
         $el.style.left = $event.pageX + 'px';
@@ -20,336 +20,152 @@
     ">
         
         <figure><img src="/src/assets/images/icons/cursor-light.svg" class="block w-[19px] h-[19px] max-w-[unset]"></figure>
-    
+
     </div>
 
-    <header role="banner" class="fixed top-0 right-0 w-full p-5 z-[9999] max-w-fit lg:p-12.5">
+    <div class="transition-all duration-1000 delay-3000" :class="{ 'opacity-0' : loaded }">
 
-        <div class="wrap flex justify-end">
+        <div class="fixed w-full h-screen flex items-center justify-center bg-base z-[999] scale-[calc(50vw/375px)] md:scale-[1.024] md:transition-[scale] md:duration-500 lg:scale-[calc(90vw/1024px)]" :class="{ 'pointer-events-none' : door }">
 
-            <button type="button" @click="openMenu = ! openMenu" class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Menu</button>
+            <div>
 
-            <!-- <menu>
+                <div class="fixed z-[9999] top-0 left-0 w-full h-full bg-primary transition-all duration-4000 pointer-events-none delay-2500" :class="door ? 'translate-y-full' : '-translate-y-full'"></div>
 
-                <a href="#">Work</a>
+            </div>
 
-                <a href="#">About</a>
+            <figure class="relative max-w-fit mx-auto transition-all duration-[5000ms]">
+                
+                <div class="transition-all duration-100 delay-2000" :class="{ 'opacity-0' : loaded }">
 
-            </menu> -->
+                    <img src="/src/assets/images/house.svg" class="block w-auto h-[550px] max-w-[unset]">
 
-        </div>
+                    <div @click="door = true; setTimeout(() => { loaded = true }, 2000)" class="door w-[137px] h-[274px] absolute bottom-3 left-[120px] rounded-t-full">
 
-    </header>
+                        <div class="relative w-full h-full">
 
-    <section id="hero" class="h-screen flex items-end transition-all duration-500 pb-12.5 px-5 overflow-hidden lg:px-12.5 lg:pb-25">
+                            <div class="block relative z-[1] bg-base border-l border-r border-t border-solid border-primary h-full rounded-t-full bg-base transition-all duration-1000" :class="door ? 'w-5' : 'w-full'"></div>
 
-        <div class="wrap w-full">
+                            <div class="block w-full h-full bg-primary absolute top-0 left-0 rounded-t-full"></div>
 
-            <div class="relative">
-
-                <figure class="absolute -top-[6.67vw] -left-[8vw] animate-spin max-w-[20.8vw]"><img src="src/assets/images/icons/blue-asterisk.svg"></figure>
-
-                <figure class="absolute -bottom-12.5 -right-12.5 animate-spin animate-spin [animation-direction:reverse] max-w-[37.33vw]"><img src="src/assets/images/icons/pink-asterisk.svg"></figure>
-
-                <div>
-
-                    <div class="transition-all duration-1000" :class="{ 'opacity-0 translate-y-5' : ! loaded }">
-
-                        <h2 class="relative z-[1] font-black uppercase -tracking-[0.03em] text-[15vw]/[0.8] flex whitespace-nowrap">
-                            
-                            <span class="block transition-all duration-500 hover:rotate-[20deg]">C</span>
-                            
-                            <span class="block transition-all duration-500 hover:-translate-y-[10px]">r</span>
-                            
-                            <span class="block transition-all duration-500 hover:scale-[0.95]">a</span>
-                            
-                            <span class="block transition-all duration-500 hover:-rotate-[5deg]">f</span>
-                            
-                            <span class="block transition-all duration-500 hover:translate-y-[15px]">t</span>
-                            
-                            <span class="block transition-all duration-500 hover:scale-[1.05]">i</span>
-                            
-                            <span class="block transition-all duration-500 hover:rotate-[10deg]">n</span>
-                            
-                            <span class="block transition-all duration-500 hover:translate-x-[20px]">g</span>
-                        
-                        </h2>
+                        </div>
 
                     </div>
 
-                    <div class="transition-all duration-1000 delay-200" :class="{ 'opacity-0 translate-y-5' : ! loaded }">
+                    <div @click="window = true; setTimeout(() => { window = false }, 2000)" class="window absolute bottom-[106px] left-[406px] w-[148px] h-[168px] rounded-t-[60px]" :class="{ 'pointer-events-none' : window }"></div>
 
-                        <h2 class="relative z-[1] font-black uppercase -tracking-[0.03em] text-[15vw]/[0.8] flex whitespace-nowrap">
-
-                            <span class="block transition-all duration-500 hover:-translate-x-[10px]">t</span>
-                             
-                            <span class="block transition-all duration-500 hover:scale-[0.95]">h</span>
-                            
-                            <span class="block transition-all duration-500 hover:rotate-[10deg]">e</span>
-
-                            <span class="block">&nbsp;</span>
-                            
-                            <span class="block transition-all duration-500 hover:scale-[0.95]">d</span>
-                            
-                            <span class="block transition-all duration-500 hover:translate-y-[15px]">i</span>
-                            
-                            <span class="block transition-all duration-500 hover:rotate-[10deg]">g</span>
-                            
-                            <span class="block transition-all duration-500 hover:-translate-y-[15px]">i</span>
-                            
-                            <span class="block transition-all duration-500 hover:translate-x-[20px]">t</span>
-
-                            <span class="block transition-all duration-500 hover:rotate-[10deg]">a</span>
-                            
-                            <span class="block transition-all duration-500 hover:-translate-y-[10px]">l</span>
-
-                        </h2>
-
-                    </div>
-
-                    <div class="transition-all duration-1000 delay-400" :class="{ 'opacity-0 translate-y-5' : ! loaded }">
-
-                        <h2 class="relative z-[1] font-black uppercase -tracking-[0.03em] text-[15vw]/[0.8] flex whitespace-nowrap">
-                            
-                            <span class="block transition-all duration-500 hover:scale-[0.95]">f</span>
-                            
-                            <span class="block transition-all duration-500 hover:translate-y-[10px]">r</span>
-                            
-                            <span class="block transition-all duration-500 hover:scale-[0.95]">o</span>
-                            
-                            <span class="block transition-all duration-500 hover:rotate-[5deg]">n</span>
-                            
-                            <span class="block transition-all duration-500 hover:translate-x-[20px]">t</span>
-
-                            <span class="block">&nbsp;</span>
-                            
-                            <span class="block transition-all duration-500 hover:-rotate-[10deg]">d</span>
-                            
-                            <span class="block transition-all duration-500 hover:scale-[1.05]">o</span>
-                            
-                            <span class="block transition-all duration-500 hover:-translate-y-[10px]">o</span>
-                            
-                            <span class="block transition-all duration-500 hover:rotate-[10deg]">r</span>
-
-                        </h2>
-
-                    </div>
+                    <div class="figure -z-1 pointer-events-none block w-15 h-13 rounded-t-full bg-primary absolute bottom-[95px] left-[396px] transition-all duration-1000" :class="{ '-translate-x-15' : ! window, 'translate-x-0! delay-1000' : door }"></div>
 
                 </div>
-
-            </div>
+            
+            </figure>
 
         </div>
 
-    </section>
+    </div>
 
-    <section id="work" x-data="{ filter : 'all' }">
+    <div class="transition-opacity duration-1000 delay-3000" :class="{ 'opacity-0' : ! loaded }">
 
-        <div class="wrap">
+        <header role="banner" class="fixed top-0 right-0 w-full p-5 z-[99] max-w-fit transition-all duration-500 lg:p-12.5" :class="{ '-translate-y-30': hideArrow }">
 
-            <div class="filters flex whitespace-nowrap gap-5 items-center overflow-x-scroll overflow-y-hidden px-5 mb-5 lg:px-12.5 lg:mb-12.5">
+            <div class="wrap flex justify-end">
 
-                <button id="web" type="button" @click="filter = $el.id" class="block relative w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Web</button>
-
-                <button id="digital" type="button" @click="filter = $el.id" class="block relative w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Digital</button>
-
-                <button id="traditional" type="button" @click="filter = $el.id" class="block relative w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Traditional</button>
-
-                <button id="all" type="button" @click="filter = $el.id" x-show="filter != 'all'" x-transition.opacity.duration.300ms class="block relative w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500">
-
-                    <span class="block w-px h-5 bg-primary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-45"></span>
-
-                    <span class="block w-px h-5 bg-primary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-45"></span>
-
-                </button>
+                <a href="#work" class="block animate-bounce relative w-10 h-10 bg-base rounded-full border border-solid border-primary uppercase text-xl transition-all duration-500 hover:scale-[1.1]"><figure class="rotate-90 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"><img src="/src/assets/images/icons/internal.svg" class="block w-auto h-5"></figure></a>
 
             </div>
 
-            <div class="swiper lg:!px-12.5" x-init="new Swiper($el, {
-                breakpoints: {
-                    1024: {
-                        spaceBetween: 0,
-                        slidesOffsetBefore: 0,
-                        slidesOffsetAfter: 0,
-                        initialSlide: 0,
-                        enabled: false,
-                        slidesPerView: 'auto'
-                    },
-                    768: {
-                        slidesPerView: 2.2,
-                        initialSlide: 0,
-                        spaceBetween: 20,
-                        slidesOffsetBefore: 20,
-                        slidesOffsetAfter: 20,
-                        loop: true,
-                    },
-                    0: {
-                        loop: true,
-                        initialSlide: 2,
-                        spaceBetween: 20,
-                        slidesOffsetBefore: 20,
-                        slidesOffsetAfter: 20,
-                    },
-                },
-            });">
+        </header>
 
-                <div class="swiper-wrapper lg:!grid lg:grid-cols-3 lg:gap-12.5">
+        <section id="hero" class="h-screen flex items-end transition-all duration-500 pb-12.5 px-5 overflow-hidden lg:px-12.5 lg:pb-25">
 
-                    <div id="web" x-show="filter == $el.id || filter == 'all'" class="swiper-slide !h-auto min-h-[481px] max-w-[380px] lg:min-h-[581px] lg:max-w-[unset]">
+            <div class="wrap w-full">
 
-                        <div class="card bg-base p-5 border border-solid border-primary rounded-[25px] h-full">
+                <div class="relative">
 
-                            <div class="relative h-full">
+                    <figure class="absolute -top-[6.67vw] -left-[8vw] animate-spin max-w-[20.8vw]"><img src="src/assets/images/icons/blue-asterisk.svg"></figure>
 
-                                <div class="image relative h-0 overflow-hidden pb-[100%] rounded-[15px] bg-primary"></div>
+                    <figure class="absolute -bottom-12.5 -right-12.5 animate-spin animate-spin [animation-direction:reverse] max-w-[37.33vw]"><img src="src/assets/images/icons/pink-asterisk.svg"></figure>
 
-                                <div class="content h-full max-h-fit mt-2.5 lg:mt-5">
+                    <div>
 
-                                    <h2 class="text-3xl max-w-[235px]">Software Engineer Portfolio Site</h2>
+                        <div class="transition-all duration-1000 delay-3400" :class="{ 'opacity-0 translate-y-5' : ! loaded }">
 
-                                    <div class="flex items-center justify-between absolute bottom-0 right-0 w-full lg:relative lg:pt-5">
-
-                                        <a href="https://leeoconnell.co.uk" class="flex pointer-events-auto items-center w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Visit<figure class="ml-2"><img src="src/assets/images/icons/external.svg"></figure></a>
-
-                                        <a href="#" class="flex pointer-events-auto items-center w-full max-w-fit ml-auto h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Navigate<figure class="ml-2"><img src="src/assets/images/icons/internal.svg"></figure></a>
-                                    
-                                    </div>
-
-                                </div>
-
-                            </div>
+                            <h2 class="relative z-[1] font-black uppercase -tracking-[0.03em] text-[15vw]/[0.8] flex whitespace-nowrap">
+                                
+                                <span class="block transition-all duration-500 hover:rotate-[20deg]">C</span>
+                                
+                                <span class="block transition-all duration-500 hover:-translate-y-[10px]">r</span>
+                                
+                                <span class="block transition-all duration-500 hover:scale-[0.95]">a</span>
+                                
+                                <span class="block transition-all duration-500 hover:-rotate-[5deg]">f</span>
+                                
+                                <span class="block transition-all duration-500 hover:translate-y-[15px]">t</span>
+                                
+                                <span class="block transition-all duration-500 hover:scale-[1.05]">i</span>
+                                
+                                <span class="block transition-all duration-500 hover:rotate-[10deg]">n</span>
+                                
+                                <span class="block transition-all duration-500 hover:translate-x-[20px]">g</span>
+                            
+                            </h2>
 
                         </div>
 
-                    </div>
+                        <div class="transition-all duration-1000 delay-3600" :class="{ 'opacity-0 translate-y-5' : ! loaded }">
 
-                    <div id="digital" x-show="filter == $el.id || filter == 'all'" class="swiper-slide !h-auto min-h-[481px] max-w-[380px] lg:min-h-[581px] lg:max-w-[unset]">
+                            <h2 class="relative z-[1] font-black uppercase -tracking-[0.03em] text-[15vw]/[0.8] flex whitespace-nowrap">
 
-                        <div class="card bg-base p-5 border border-solid border-primary rounded-[25px] h-full">
+                                <span class="block transition-all duration-500 hover:-translate-x-[10px]">t</span>
+                                
+                                <span class="block transition-all duration-500 hover:scale-[0.95]">h</span>
+                                
+                                <span class="block transition-all duration-500 hover:rotate-[10deg]">e</span>
 
-                            <div class="relative h-full">
+                                <span class="block">&nbsp;</span>
+                                
+                                <span class="block transition-all duration-500 hover:scale-[0.95]">d</span>
+                                
+                                <span class="block transition-all duration-500 hover:translate-y-[15px]">i</span>
+                                
+                                <span class="block transition-all duration-500 hover:rotate-[10deg]">g</span>
+                                
+                                <span class="block transition-all duration-500 hover:-translate-y-[15px]">i</span>
+                                
+                                <span class="block transition-all duration-500 hover:translate-x-[20px]">t</span>
 
-                                <div class="image relative h-0 overflow-hidden pb-[100%] rounded-[15px] bg-white"></div>
+                                <span class="block transition-all duration-500 hover:rotate-[10deg]">a</span>
+                                
+                                <span class="block transition-all duration-500 hover:-translate-y-[10px]">l</span>
 
-                                <div class="content h-full max-h-fit mt-2.5 lg:mt-5">
-
-                                    <h2 class="text-3xl max-w-[235px]">Digital Illustration</h2>
-                                    
-                                    <div class="flex items-center justify-between absolute bottom-0 right-0 w-full lg:relative lg:pt-5">
-
-                                        <a href="#" class="flex pointer-events-auto items-center w-full max-w-fit ml-auto h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Navigate<figure class="ml-2"><img src="src/assets/images/icons/internal.svg"></figure></a>
-                                    
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div id="traditional" x-show="filter == $el.id || filter == 'all'" class="swiper-slide !h-auto min-h-[481px] max-w-[380px] lg:min-h-[581px] lg:max-w-[unset]">
-
-                        <div class="card bg-base p-5 border border-solid border-primary rounded-[25px] h-full">
-
-                            <div class="relative h-full">
-
-                                <div class="image relative h-0 overflow-hidden pb-[100%] rounded-[15px] bg-primary/10"></div>
-
-                                <div class="content h-full max-h-fit mt-2.5 lg:mt-5">
-
-                                    <h2 class="text-3xl max-w-[235px]">Traditional Illustration</h2>
-
-                                    <div class="flex items-center justify-between absolute bottom-0 right-0 w-full lg:relative lg:pt-5">
-
-                                        <a href="#" class="flex pointer-events-auto items-center w-full max-w-fit ml-auto h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Navigate<figure class="ml-2"><img src="src/assets/images/icons/internal.svg"></figure></a>
-                                    
-                                    </div>
-
-                                </div>
-
-                            </div>
+                            </h2>
 
                         </div>
 
-                    </div>
+                        <div class="transition-all duration-1000 delay-3800" :class="{ 'opacity-0 translate-y-5' : ! loaded }">
 
-                    <div id="web" x-show="filter == $el.id || filter == 'all'" class="swiper-slide !h-auto min-h-[481px] max-w-[380px] lg:min-h-[581px] lg:max-w-[unset]">
+                            <h2 class="relative z-[1] font-black uppercase -tracking-[0.03em] text-[15vw]/[0.8] flex whitespace-nowrap">
+                                
+                                <span class="block transition-all duration-500 hover:scale-[0.95]">f</span>
+                                
+                                <span class="block transition-all duration-500 hover:translate-y-[10px]">r</span>
+                                
+                                <span class="block transition-all duration-500 hover:scale-[0.95]">o</span>
+                                
+                                <span class="block transition-all duration-500 hover:rotate-[5deg]">n</span>
+                                
+                                <span class="block transition-all duration-500 hover:translate-x-[20px]">t</span>
 
-                        <div class="card bg-base p-5 border border-solid border-primary rounded-[25px] h-full">
+                                <span class="block">&nbsp;</span>
+                                
+                                <span class="block transition-all duration-500 hover:-rotate-[10deg]">d</span>
+                                
+                                <span class="block transition-all duration-500 hover:scale-[1.05]">o</span>
+                                
+                                <span class="block transition-all duration-500 hover:-translate-y-[10px]">o</span>
+                                
+                                <span class="block transition-all duration-500 hover:rotate-[10deg]">r</span>
 
-                            <div class="relative h-full">
-
-                                <div class="image relative h-0 overflow-hidden pb-[100%] rounded-[15px] bg-primary"></div>
-
-                                <div class="content h-full max-h-fit mt-2.5 lg:mt-5">
-
-                                    <h2 class="text-3xl max-w-[235px]">Software Engineer Portfolio Site</h2>
-
-                                    <div class="flex items-center justify-between absolute bottom-0 right-0 w-full lg:relative lg:pt-5">
-
-                                        <a href="https://leeoconnell.co.uk" class="flex pointer-events-auto items-center w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Visit<figure class="ml-2"><img src="src/assets/images/icons/external.svg"></figure></a>
-
-                                        <a href="#" class="flex pointer-events-auto items-center w-full max-w-fit ml-auto h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Navigate<figure class="ml-2"><img src="src/assets/images/icons/internal.svg"></figure></a>
-                                    
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div id="digital" x-show="filter == $el.id || filter == 'all'" class="swiper-slide !h-auto min-h-[481px] max-w-[380px] lg:min-h-[581px] lg:max-w-[unset]">
-
-                        <div class="card bg-base p-5 border border-solid border-primary rounded-[25px] h-full">
-
-                            <div class="relative h-full">
-
-                                <div class="image relative h-0 overflow-hidden pb-[100%] rounded-[15px] bg-white"></div>
-
-                                <div class="content h-full max-h-fit mt-2.5 lg:mt-5">
-
-                                    <h2 class="text-3xl max-w-[235px]">Digital Illustration</h2>
-                                    
-                                    <div class="flex items-center justify-between absolute bottom-0 right-0 w-full lg:relative lg:pt-5">
-
-                                        <a href="#" class="flex pointer-events-auto items-center w-full max-w-fit ml-auto h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Navigate<figure class="ml-2"><img src="src/assets/images/icons/internal.svg"></figure></a>
-                                    
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div id="traditional" x-show="filter == $el.id || filter == 'all'" class="swiper-slide !h-auto min-h-[481px] max-w-[380px] lg:min-h-[581px] lg:max-w-[unset]">
-
-                        <div class="card bg-base p-5 border border-solid border-primary rounded-[25px] h-full">
-
-                            <div class="relative h-full">
-
-                                <div class="image relative h-0 overflow-hidden pb-[100%] rounded-[15px] bg-primary/10"></div>
-
-                                <div class="content h-full max-h-fit mt-2.5 lg:mt-5">
-
-                                    <h2 class="text-3xl max-w-[235px]">Traditional Illustration</h2>
-
-                                    <div class="flex items-center justify-between absolute bottom-0 right-0 w-full lg:relative lg:pt-5">
-
-                                        <a href="#" class="flex pointer-events-auto items-center w-full max-w-fit ml-auto h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Navigate<figure class="ml-2"><img src="src/assets/images/icons/internal.svg"></figure></a>
-                                    
-                                    </div>
-
-                                </div>
-
-                            </div>
+                            </h2>
 
                         </div>
 
@@ -359,142 +175,221 @@
 
             </div>
 
-        </div>
+        </section>
 
-    </section>
+        <section id="work" x-data="{ filter : 'all' }" x-init="
+            $nextTick(() => {
+                let top = $el.getBoundingClientRect().top;
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY + 50 >= top) {
+                        hideArrow = true;
+                    } else {
+                        hideArrow = false;
+                    }
+                });
+            });
+        ">
 
-    <section id="about" class="px-5 my-20 overflow-hidden md:mt-12.5 md:mb-0 md:h-screen lg:px-12.5">
+            <div class="wrap">
 
-        <div class="wrap max-w-[768px] mx-auto h-full">
+                <div class="filters flex whitespace-nowrap gap-5 items-center overflow-x-scroll overflow-y-hidden px-5 mb-5 lg:px-12.5 lg:mb-12.5">
 
-            <div class="md:flex md:items-center md:justify-center md:h-full">
+                    <button id="web" type="button" @click="filter = $el.id" class="block relative w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Web</button>
 
-                <div class="block relative w-full h-0 pb-[100%] bg-base rounded-[25px] md:pb-[50%] lg:pb-[75%]">
+                    <button id="digital" type="button" @click="filter = $el.id" class="block relative w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Digital</button>
 
-                    <div class="absolute top-0 left-0 w-full h-full">
+                    <button id="traditional" type="button" @click="filter = $el.id" class="block relative w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Traditional</button>
 
-                        <div class="relative w-full h-full flex items-center justify-center">
+                    <button id="all" type="button" @click="filter = $el.id" x-show="filter != 'all'" x-transition.opacity.duration.300ms class="block relative w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500">
 
-                            <div class="girl relative mb-20 md:mb-0">
+                        <span class="block w-px h-5 bg-primary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-45"></span>
 
-                                <div class="block rounded-full w-full h-full border-2 border-solid border-primary z-1 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+                        <span class="block w-px h-5 bg-primary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-45"></span>
 
-                                <div class="hair">
+                    </button>
 
-                                    <div class="block w-[calc(100%+20px)] bg-primary h-[calc(100%+100px)] absolute left-1/2 -translate-x-1/2 -top-2.5 rounded-full"></div>
+                </div>
+
+                <div class="swiper lg:!px-12.5" x-init="new Swiper($el, {
+                    breakpoints: {
+                        1024: {
+                            spaceBetween: 0,
+                            slidesOffsetBefore: 0,
+                            slidesOffsetAfter: 0,
+                            initialSlide: 0,
+                            enabled: false,
+                            slidesPerView: 'auto'
+                        },
+                        768: {
+                            slidesPerView: 2.2,
+                            initialSlide: 0,
+                            spaceBetween: 20,
+                            slidesOffsetBefore: 20,
+                            slidesOffsetAfter: 20,
+                            loop: true,
+                        },
+                        0: {
+                            loop: true,
+                            initialSlide: 2,
+                            spaceBetween: 20,
+                            slidesOffsetBefore: 20,
+                            slidesOffsetAfter: 20,
+                        },
+                    },
+                });">
+
+                    <div class="swiper-wrapper lg:!grid lg:grid-cols-3 lg:gap-12.5">
+
+                        <div id="web" x-show="filter == $el.id || filter == 'all'" class="swiper-slide !h-auto min-h-[481px] max-w-[380px] lg:min-h-[581px] lg:max-w-[unset]">
+
+                            <div class="card bg-base p-5 border border-solid border-primary rounded-[25px] h-full">
+
+                                <div class="relative h-full">
+
+                                    <div class="image relative h-0 overflow-hidden pb-[100%] rounded-[15px] bg-primary"></div>
+
+                                    <div class="content h-full max-h-fit mt-2.5 lg:mt-5">
+
+                                        <h2 class="text-3xl max-w-[235px]">Software Engineer Portfolio Site</h2>
+
+                                        <div class="flex items-center justify-between absolute bottom-0 right-0 w-full lg:relative lg:pt-5">
+
+                                            <a href="https://leeoconnell.co.uk" class="flex pointer-events-auto items-center w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Visit<figure class="ml-2"><img src="src/assets/images/icons/external.svg"></figure></a>
+
+                                            <a href="#" class="flex pointer-events-auto items-center w-full max-w-fit ml-auto h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Navigate<figure class="ml-2"><img src="src/assets/images/icons/internal.svg"></figure></a>
+                                        
+                                        </div>
+
+                                    </div>
 
                                 </div>
 
-                                <div class="face overflow-hidden relative bg-base rounded-full border border-solid border-primary w-48 h-57.5">
+                            </div>
 
-                                    <div class="fringe">
+                        </div>
 
-                                        <div class="block bg-primary w-full h-full absolute -top-[calc(50%+20px)] -left-[calc(50%+20px)] rounded-full"></div>
+                        <div id="digital" x-show="filter == $el.id || filter == 'all'" class="swiper-slide !h-auto min-h-[481px] max-w-[380px] lg:min-h-[581px] lg:max-w-[unset]">
 
-                                        <div class="block bg-primary w-[calc(100%+40px)] h-full absolute -top-[calc(50%+20px)] -right-1/2 rounded-full"></div>
+                            <div class="card bg-base p-5 border border-solid border-primary rounded-[25px] h-full">
 
-                                    </div>
+                                <div class="relative h-full">
 
-                                    <div class="eyes flex items-center justify-center gap-x-8 h-full relative z-1" x-data="{ blink : false }" 
-                                        @mousemove.document="
-                                            const eyes = $el.querySelectorAll('.eye');
-                                            const rect = eyes[0].getBoundingClientRect();
-                                            const eyeCenterX = rect.left + rect.width / 2;
-                                            const eyeCenterY = rect.top + rect.height / 2;
-                                            const angle = Math.atan2($event.clientY - eyeCenterY, $event.clientX - eyeCenterX);
-                                            const maxOffset = 9;
-                                            const maxOffsetUp = 0;
-                                            const maxOffsetDown = 9;
-                                            let offsetX = Math.cos(angle) * maxOffset;
-                                            let offsetY = Math.sin(angle) * maxOffset;
-                                            // clamp vertical movement so pupils don't go too far up
-                                            offsetY = Math.max(-maxOffsetUp, Math.min(offsetY, maxOffsetDown));
+                                    <div class="image relative h-0 overflow-hidden pb-[100%] rounded-[15px] bg-white"></div>
 
-                                            eyes.forEach(eye => {
-                                                const pupil = eye.querySelector('.pupil');
-                                                pupil.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
-                                            });
-                                        "
-                                        x-init="
-                                            setInterval(() => {
-                                                blink = true;
-                                                setTimeout(() => {
-                                                    blink = false;
-                                                }, 200);
-                                            }, 4000);
-                                        "
-                                    >
+                                    <div class="content h-full max-h-fit mt-2.5 lg:mt-5">
 
-                                        <div class="eye overflow-hidden bg-base block relative w-10 h-10 rounded-full border border-solid border-primary">
+                                        <h2 class="text-3xl max-w-[235px]">Digital Illustration</h2>
+                                        
+                                        <div class="flex items-center justify-between absolute bottom-0 right-0 w-full lg:relative lg:pt-5">
 
-                                            <div :class="{ '!h-full' : blink }" class="eyelid transition-all block relative w-full h-1/2 rounded-t-full border-b border-solid border-primary bg-base z-1 relative"></div>
-                                            
-                                            <div class="pupil w-5 h-5 rounded-full bg-primary absolute top-[calc(50%+1px)] left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
-
-                                            <div class="lashes -mt-3 relative z-1 flex justify-between">
-
-                                                <div class="lash w-px h-3 bg-primary -rotate-[20deg] -ml-0.5"></div>
-
-                                                <div class="lash w-px h-3 bg-primary -rotate-[10deg]"></div>
-
-                                                <div class="lash w-px h-3 bg-primary rotate-[10deg]"></div>
-
-                                                <div class="lash w-px h-3 bg-primary rotate-[20deg] -mr-0.5"></div>
-
-                                            </div>
-
-                                        </div>
-
-                                        <div class="eye overflow-hidden bg-base block relative w-10 h-10 rounded-full border border-solid border-primary">
-
-                                            <div :class="{ '!h-full' : blink }" class="eyelid transition-all block relative w-full h-1/2 rounded-t-full border-b border-solid border-primary bg-base z-1"></div>
-                                            
-                                            <div class="pupil w-5 h-5 rounded-full bg-primary absolute top-[calc(50%+1px)] left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
-
-                                            <div class="lashes -mt-3 relative z-1 flex justify-between">
-
-                                                <div class="lash w-px h-3 bg-primary -rotate-[20deg] -ml-0.5"></div>
-
-                                                <div class="lash w-px h-3 bg-primary -rotate-[10deg]"></div>
-
-                                                <div class="lash w-px h-3 bg-primary rotate-[10deg]"></div>
-
-                                                <div class="lash w-px h-3 bg-primary rotate-[20deg] -mr-0.5"></div>
-
-                                            </div>
-
+                                            <a href="#" class="flex pointer-events-auto items-center w-full max-w-fit ml-auto h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Navigate<figure class="ml-2"><img src="src/assets/images/icons/internal.svg"></figure></a>
+                                        
                                         </div>
 
                                     </div>
 
-                                    <div class="cheeks flex items-center justify-center w-full absolute top-[calc(50%+30px)] -translate-y-1/2 gap-x-18">
+                                </div>
 
-                                        <div class="block w-9 h-9 rounded-full bg-pink/30"></div>
+                            </div>
 
-                                        <div class="block w-9 h-9 rounded-full bg-pink/30"></div>
+                        </div>
+
+                        <div id="traditional" x-show="filter == $el.id || filter == 'all'" class="swiper-slide !h-auto min-h-[481px] max-w-[380px] lg:min-h-[581px] lg:max-w-[unset]">
+
+                            <div class="card bg-base p-5 border border-solid border-primary rounded-[25px] h-full">
+
+                                <div class="relative h-full">
+
+                                    <div class="image relative h-0 overflow-hidden pb-[100%] rounded-[15px] bg-primary/10"></div>
+
+                                    <div class="content h-full max-h-fit mt-2.5 lg:mt-5">
+
+                                        <h2 class="text-3xl max-w-[235px]">Traditional Illustration</h2>
+
+                                        <div class="flex items-center justify-between absolute bottom-0 right-0 w-full lg:relative lg:pt-5">
+
+                                            <a href="#" class="flex pointer-events-auto items-center w-full max-w-fit ml-auto h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Navigate<figure class="ml-2"><img src="src/assets/images/icons/internal.svg"></figure></a>
+                                        
+                                        </div>
 
                                     </div>
 
-                                    <div class="mouth absolute bottom-7.5 left-1/2 -translate-x-1/2">
+                                </div>
 
-                                        <div class="lips relative">
+                            </div>
 
-                                            <div class="top flex items-center">
+                        </div>
 
-                                                <div class="bg-primary block w-5 h-2.5 rounded-t-full"></div>
+                        <div id="web" x-show="filter == $el.id || filter == 'all'" class="swiper-slide !h-auto min-h-[481px] max-w-[380px] lg:min-h-[581px] lg:max-w-[unset]">
 
-                                                <div class="bg-primary block w-5 h-2.5 rounded-t-full -ml-0.5"></div>
+                            <div class="card bg-base p-5 border border-solid border-primary rounded-[25px] h-full">
 
-                                            </div>
+                                <div class="relative h-full">
 
-                                            <div class="block bg-primary w-[calc(100%+15px)] h-px absolute top-[calc(50%-2px)] -translate-y-1/2 left-1/2 -translate-x-1/2"></div>
+                                    <div class="image relative h-0 overflow-hidden pb-[100%] rounded-[15px] bg-primary"></div>
 
-                                            <div class="bottom">
+                                    <div class="content h-full max-h-fit mt-2.5 lg:mt-5">
 
-                                                <div class="bg-primary block w-9.5 h-4 rounded-b-full"></div>
+                                        <h2 class="text-3xl max-w-[235px]">Software Engineer Portfolio Site</h2>
 
-                                            </div>
+                                        <div class="flex items-center justify-between absolute bottom-0 right-0 w-full lg:relative lg:pt-5">
 
+                                            <a href="https://leeoconnell.co.uk" class="flex pointer-events-auto items-center w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Visit<figure class="ml-2"><img src="src/assets/images/icons/external.svg"></figure></a>
+
+                                            <a href="#" class="flex pointer-events-auto items-center w-full max-w-fit ml-auto h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Navigate<figure class="ml-2"><img src="src/assets/images/icons/internal.svg"></figure></a>
+                                        
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div id="digital" x-show="filter == $el.id || filter == 'all'" class="swiper-slide !h-auto min-h-[481px] max-w-[380px] lg:min-h-[581px] lg:max-w-[unset]">
+
+                            <div class="card bg-base p-5 border border-solid border-primary rounded-[25px] h-full">
+
+                                <div class="relative h-full">
+
+                                    <div class="image relative h-0 overflow-hidden pb-[100%] rounded-[15px] bg-white"></div>
+
+                                    <div class="content h-full max-h-fit mt-2.5 lg:mt-5">
+
+                                        <h2 class="text-3xl max-w-[235px]">Digital Illustration</h2>
+                                        
+                                        <div class="flex items-center justify-between absolute bottom-0 right-0 w-full lg:relative lg:pt-5">
+
+                                            <a href="#" class="flex pointer-events-auto items-center w-full max-w-fit ml-auto h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Navigate<figure class="ml-2"><img src="src/assets/images/icons/internal.svg"></figure></a>
+                                        
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div id="traditional" x-show="filter == $el.id || filter == 'all'" class="swiper-slide !h-auto min-h-[481px] max-w-[380px] lg:min-h-[581px] lg:max-w-[unset]">
+
+                            <div class="card bg-base p-5 border border-solid border-primary rounded-[25px] h-full">
+
+                                <div class="relative h-full">
+
+                                    <div class="image relative h-0 overflow-hidden pb-[100%] rounded-[15px] bg-primary/10"></div>
+
+                                    <div class="content h-full max-h-fit mt-2.5 lg:mt-5">
+
+                                        <h2 class="text-3xl max-w-[235px]">Traditional Illustration</h2>
+
+                                        <div class="flex items-center justify-between absolute bottom-0 right-0 w-full lg:relative lg:pt-5">
+
+                                            <a href="#" class="flex pointer-events-auto items-center w-full max-w-fit ml-auto h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Navigate<figure class="ml-2"><img src="src/assets/images/icons/internal.svg"></figure></a>
+                                        
                                         </div>
 
                                     </div>
@@ -509,51 +404,203 @@
 
                 </div>
 
-                <div class="content mt-5">
+            </div>
 
-                    <h2 class="text-3xl">Frontend Developer and Designer based in Belfast.</h2>
+        </section>
 
-                    <div class="skills flex flex-wrap items-center gap-2.5 mt-2.5 w-[calc(100%+30px)]">
+        <section id="about" class="px-5 my-20 overflow-hidden md:mt-12.5 md:mb-0 md:h-screen lg:px-12.5">
 
-                        <div class="relative">
+            <div class="wrap max-w-[768px] mx-auto h-full">
 
-                            <p class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">HTML</p>
+                <div class="md:flex md:items-center md:justify-center md:h-full">
 
-                        </div>
+                    <div class="block relative w-full h-0 pb-[100%] bg-base rounded-[25px] md:pb-[50%] lg:pb-[75%]">
 
-                        <div class="relative" x-data="{ hovered : false }">
+                        <div class="absolute top-0 left-0 w-full h-full">
 
-                            <p @mouseenter="hovered = true" @mouseleave="hovered = false" @click="window.innerWidth < 1024 ? hovered = ! hovered : 0" class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">CSS*</p>
+                            <div class="relative w-full h-full flex items-center justify-center">
 
-                            <div class="sub absolute -top-[37px] left-1/2 z-[1] transition-all duration-500" :class="{ 'opacity-0 translate-x-2.5' : ! hovered }">
+                                <div class="girl relative mb-20 md:mb-0">
 
-                                <p class="block w-full max-w-fit h-[32px] leading-[32px] bg-base rounded-full border border-solid border-primary px-3 uppercase text-lg">+Tailwind</p>
+                                    <div class="block rounded-full w-full h-full border-2 border-solid border-primary z-1 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+
+                                    <div class="hair">
+
+                                        <div class="block w-[calc(100%+20px)] bg-primary h-[calc(100%+100px)] absolute left-1/2 -translate-x-1/2 -top-2.5 rounded-full"></div>
+
+                                    </div>
+
+                                    <div class="face overflow-hidden relative bg-base rounded-full border border-solid border-primary w-48 h-57.5">
+
+                                        <div class="fringe">
+
+                                            <div class="block bg-primary w-full h-full absolute -top-[calc(50%+20px)] -left-[calc(50%+20px)] rounded-full"></div>
+
+                                            <div class="block bg-primary w-[calc(100%+40px)] h-full absolute -top-[calc(50%+20px)] -right-1/2 rounded-full"></div>
+
+                                        </div>
+
+                                        <div class="eyes flex items-center justify-center gap-x-8 h-full relative z-1" x-data="{ blink : false }" 
+                                            @mousemove.document="
+                                                const eyes = $el.querySelectorAll('.eye');
+                                                const rect = eyes[0].getBoundingClientRect();
+                                                const eyeCenterX = rect.left + rect.width / 2;
+                                                const eyeCenterY = rect.top + rect.height / 2;
+                                                const angle = Math.atan2($event.clientY - eyeCenterY, $event.clientX - eyeCenterX);
+                                                const maxOffset = 9;
+                                                const maxOffsetUp = 0;
+                                                const maxOffsetDown = 9;
+                                                let offsetX = Math.cos(angle) * maxOffset;
+                                                let offsetY = Math.sin(angle) * maxOffset;
+                                                // clamp vertical movement so pupils don't go too far up
+                                                offsetY = Math.max(-maxOffsetUp, Math.min(offsetY, maxOffsetDown));
+
+                                                eyes.forEach(eye => {
+                                                    const pupil = eye.querySelector('.pupil');
+                                                    pupil.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+                                                });
+                                            "
+                                            x-init="
+                                                setInterval(() => {
+                                                    blink = true;
+                                                    setTimeout(() => {
+                                                        blink = false;
+                                                    }, 200);
+                                                }, 4000);
+                                            "
+                                        >
+
+                                            <div class="eye overflow-hidden bg-base block relative w-10 h-10 rounded-full border border-solid border-primary">
+
+                                                <div :class="{ '!h-full' : blink }" class="eyelid transition-all block relative w-full h-1/2 rounded-t-full border-b border-solid border-primary bg-base z-1 relative"></div>
+                                                
+                                                <div class="pupil w-5 h-5 rounded-full bg-primary absolute top-[calc(50%+1px)] left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+
+                                                <div class="lashes -mt-3 relative z-1 flex justify-between">
+
+                                                    <div class="lash w-px h-3 bg-primary -rotate-[20deg] -ml-0.5"></div>
+
+                                                    <div class="lash w-px h-3 bg-primary -rotate-[10deg]"></div>
+
+                                                    <div class="lash w-px h-3 bg-primary rotate-[10deg]"></div>
+
+                                                    <div class="lash w-px h-3 bg-primary rotate-[20deg] -mr-0.5"></div>
+
+                                                </div>
+
+                                            </div>
+
+                                            <div class="eye overflow-hidden bg-base block relative w-10 h-10 rounded-full border border-solid border-primary">
+
+                                                <div :class="{ '!h-full' : blink }" class="eyelid transition-all block relative w-full h-1/2 rounded-t-full border-b border-solid border-primary bg-base z-1"></div>
+                                                
+                                                <div class="pupil w-5 h-5 rounded-full bg-primary absolute top-[calc(50%+1px)] left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+
+                                                <div class="lashes -mt-3 relative z-1 flex justify-between">
+
+                                                    <div class="lash w-px h-3 bg-primary -rotate-[20deg] -ml-0.5"></div>
+
+                                                    <div class="lash w-px h-3 bg-primary -rotate-[10deg]"></div>
+
+                                                    <div class="lash w-px h-3 bg-primary rotate-[10deg]"></div>
+
+                                                    <div class="lash w-px h-3 bg-primary rotate-[20deg] -mr-0.5"></div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="cheeks flex items-center justify-center w-full absolute top-[calc(50%+30px)] -translate-y-1/2 gap-x-18">
+
+                                            <div class="block w-9 h-9 rounded-full bg-pink/30"></div>
+
+                                            <div class="block w-9 h-9 rounded-full bg-pink/30"></div>
+
+                                        </div>
+
+                                        <div class="mouth absolute bottom-7.5 left-1/2 -translate-x-1/2">
+
+                                            <div class="lips relative">
+
+                                                <div class="top flex items-center">
+
+                                                    <div class="bg-primary block w-5 h-2.5 rounded-t-full"></div>
+
+                                                    <div class="bg-primary block w-5 h-2.5 rounded-t-full -ml-0.5"></div>
+
+                                                </div>
+
+                                                <div class="block bg-primary w-[calc(100%+15px)] h-px absolute top-[calc(50%-2px)] -translate-y-1/2 left-1/2 -translate-x-1/2"></div>
+
+                                                <div class="bottom">
+
+                                                    <div class="bg-primary block w-9.5 h-4 rounded-b-full"></div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
 
                             </div>
 
                         </div>
 
-                        <div class="relative" x-data="{ hovered : false }">
-                            
-                            <p @mouseenter="hovered = true" @mouseleave="hovered = false" @click="window.innerWidth < 1024 ? hovered = ! hovered : 0" class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">JavaScript*</p>
+                    </div>
 
-                            <div class="sub absolute -top-[37px] left-1/2 z-[1] transition-all duration-500" :class="{ 'opacity-0 translate-x-2.5' : ! hovered }">
+                    <div class="content mt-5">
 
-                                <p class="block w-full max-w-fit h-[32px] leading-[32px] bg-base rounded-full border border-solid border-primary px-3 uppercase text-lg">+Alpine.js</p>
+                        <h2 class="text-3xl">Frontend Developer and Designer based in Belfast.</h2>
+
+                        <div class="skills flex flex-wrap items-center gap-2.5 mt-2.5 w-[calc(100%+30px)]">
+
+                            <div class="relative">
+
+                                <p class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">HTML</p>
 
                             </div>
 
-                        </div>
+                            <div class="relative" x-data="{ hovered : false }">
 
-                        <div class="relative">
+                                <p @mouseenter="hovered = true" @mouseleave="hovered = false" @click="window.innerWidth < 1024 ? hovered = ! hovered : 0" class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">CSS*</p>
 
-                            <p class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Figma</p>
+                                <div class="sub absolute -top-[37px] left-1/2 z-[1] transition-all duration-500" :class="{ 'opacity-0 translate-x-2.5' : ! hovered }">
 
-                        </div>
+                                    <p class="block w-full max-w-fit h-[32px] leading-[32px] bg-base rounded-full border border-solid border-primary px-3 uppercase text-lg">+Tailwind</p>
 
-                        <div class="relative">
+                                </div>
 
-                            <p class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Adobe Illustrator</p>
+                            </div>
+
+                            <div class="relative" x-data="{ hovered : false }">
+                                
+                                <p @mouseenter="hovered = true" @mouseleave="hovered = false" @click="window.innerWidth < 1024 ? hovered = ! hovered : 0" class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">JavaScript*</p>
+
+                                <div class="sub absolute -top-[37px] left-1/2 z-[1] transition-all duration-500" :class="{ 'opacity-0 translate-x-2.5' : ! hovered }">
+
+                                    <p class="block w-full max-w-fit h-[32px] leading-[32px] bg-base rounded-full border border-solid border-primary px-3 uppercase text-lg">+Alpine.js</p>
+
+                                </div>
+
+                            </div>
+
+                            <div class="relative">
+
+                                <p class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Figma</p>
+
+                            </div>
+
+                            <div class="relative">
+
+                                <p class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Adobe Illustrator</p>
+
+                            </div>
 
                         </div>
 
@@ -563,26 +610,26 @@
 
             </div>
 
-        </div>
+        </section>
 
-    </section>
+        <section id="social" class="w-full flex items-center justify-end p-5 mt-2.5 z-[9] md:fixed md:bottom-0 md:right-0 md:max-w-fit lg:p-12.5 lg:mt-0">
 
-    <section id="social" class="w-full flex items-center justify-end p-5 mt-2.5 z-[9] md:fixed md:bottom-0 md:right-0 md:max-w-fit lg:p-12.5 lg:mt-0">
+            <div class="wrap">
 
-        <div class="wrap">
+                <div class="flex items-center gap-3">
 
-            <div class="flex items-center gap-3">
+                    <a href="https://www.linkedin.com/in/jessicaaaa/" class="text-[0px] group" aria-label="Go to LinkedIn"><figure class="transition-all duration-500 hover:scale-[1.15]"><img src="src/assets/images/icons/linkedin.svg"></figure>LinkedIn</a>
 
-                <a href="https://www.linkedin.com/in/jessicaaaa/" class="text-[0px] group" aria-label="Go to LinkedIn"><figure class="transition-all duration-500 hover:scale-[1.15]"><img src="src/assets/images/icons/linkedin.svg"></figure>LinkedIn</a>
+                    <a href="https://github.com/j-essica0" class="text-[0px] group" aria-label="Go to GitHub"><figure class="transition-all duration-500 hover:scale-[1.15]"><img src="src/assets/images/icons/github.svg"></figure>GitHub</a>
 
-                <a href="https://github.com/j-essica0" class="text-[0px] group" aria-label="Go to GitHub"><figure class="transition-all duration-500 hover:scale-[1.15]"><img src="src/assets/images/icons/github.svg"></figure>GitHub</a>
+                    <a href="https://www.behance.net/j_essica" class="text-[0px] group" aria-label="Go to Behance"><figure class="transition-all duration-500 hover:scale-[1.15]"><img src="src/assets/images/icons/behance.svg"></figure>Behance</a>
+                </div>
 
-                <a href="https://www.behance.net/j_essica" class="text-[0px] group" aria-label="Go to Behance"><figure class="transition-all duration-500 hover:scale-[1.15]"><img src="src/assets/images/icons/behance.svg"></figure>Behance</a>
             </div>
 
-        </div>
+        </section>
 
-    </section>
+    </div>
 
     <!-- scripts -->
     <script type="module" src="/src/assets/js/site.js"></script>
