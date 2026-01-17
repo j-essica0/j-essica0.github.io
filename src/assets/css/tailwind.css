@@ -34,6 +34,7 @@
     /* animations */
     --animate-attention: attention 3s ease-in-out infinite;
     --animate-attention-alt: attention-alt 3s ease-in-out 0.5s infinite;
+    --animate-burst: burst 3s ease-in-out 1s infinite;
 
     @keyframes attention {
         0% { transform: rotate(0deg); }
@@ -59,6 +60,23 @@
         14% { transform: rotate(-1.8deg); }
         16% { transform: rotate(0deg); }
         100% { transform: rotate(0deg); }
+    }
+
+    @keyframes burst {
+        0%{
+            height: 0px;
+        }
+        10% {
+            height: 100%;
+        }
+        20% {
+            transform: scaleY(0);
+            height: 100%;
+        }
+        100% {
+            transform: scaleY(0);
+            height: 0px;
+        }
     }
 }
 

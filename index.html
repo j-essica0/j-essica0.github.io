@@ -25,7 +25,7 @@
 
     <div>
 
-        <div class="fixed w-full h-screen flex items-center justify-center z-[999] transition-all duration-1000">
+        <div class="fixed w-full h-screen flex items-center justify-center z-[999] transition-all duration-1000" :class="{ 'pointer-events-none' : fadeIn }">
 
             <figure class="relative max-w-fit mx-auto transition-all duration-1000 scale-[calc(50vw/375px)] md:scale-[1.024] md:transition-[scale] lg:scale-[calc(90vw/1024px)]">
                 
@@ -40,6 +40,34 @@
                             <div class="block relative z-[1] bg-base border-l border-r border-t border-solid border-primary h-full rounded-t-full bg-base transition-all duration-1000" :class="door ? 'w-5' : 'w-full'"></div>
 
                             <div class="block w-full h-full bg-primary absolute top-0 left-0 rounded-t-full"></div>
+
+                            <div class="absolute top-20 left-20 w-5 h-5 pointer-events-none z-9">
+
+                                <div>
+
+                                    <span class="block absolute -top-3 left-1 w-px h-3 before:content-[''] before:block before:animate-burst before:w-full before:bg-primary before:absolute before:left-0 before:bottom-0"></span>
+
+                                    <span class="block absolute -top-2.5 -left-1.5 w-px h-3 -rotate-45 before:content-[''] before:block before:animate-burst before:w-full before:bg-primary before:absolute before:left-0 before:bottom-0"></span>
+
+                                    <span class="block absolute -left-2 top-0 w-px h-3 -rotate-90 before:content-[''] before:block before:animate-burst before:w-full before:bg-primary before:absolute before:left-0 before:bottom-0"></span>
+
+                                    <span class="block absolute top-[9px] -left-[6px] w-px h-3 -rotate-135 before:content-[''] before:block before:animate-burst before:w-full before:bg-primary before:absolute before:left-0 before:bottom-0"></span>
+
+                                </div>
+
+                                <div class="-scale-x-100 -scale-y-100 absolute top-1/2 left-1/2">
+
+                                    <span class="block absolute -top-[13px] left-[5px] w-px h-3 before:content-[''] before:block before:animate-burst before:w-full before:bg-primary before:absolute before:left-0 before:bottom-0"></span>
+
+                                    <span class="block absolute -top-2.75 -left-[5px] w-px h-3 -rotate-45 before:content-[''] before:block before:animate-burst before:w-full before:bg-primary before:absolute before:left-0 before:bottom-0"></span>
+
+                                    <span class="block absolute -left-2 -top-[2px] w-px h-3 -rotate-90 before:content-[''] before:block before:animate-burst before:w-full before:bg-primary before:absolute before:left-0 before:bottom-0"></span>
+
+                                    <span class="block absolute top-2 -left-[5px] w-px h-3 -rotate-135 before:content-[''] before:block before:animate-burst before:w-full before:bg-primary before:absolute before:left-0 before:bottom-0"></span>
+
+                                </div>
+
+                            </div>
 
                         </div>
 
@@ -59,7 +87,7 @@
 
     <div class="transition-all duration-500 delay-500" :class="{ 'translate-x-30' : ! fadeIn }">
 
-        <header role="banner" class="fixed top-0 right-0 w-full p-5 z-[99] max-w-fit transition-all duration-500 lg:p-12.5" :class="{ '-translate-y-30': hideArrow }">
+        <header role="banner" class="fixed top-0 right-0 w-full p-5 z-[99] max-w-fit transition-all duration-700 lg:p-12.5" :class="{ '-translate-y-30': hideArrow }">
 
             <div class="wrap flex justify-end">
 
