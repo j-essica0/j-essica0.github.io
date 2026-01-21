@@ -22,6 +22,7 @@
     --color-transparent: rgba(0, 0, 0, 0);
     --color-white: rgba(255, 255, 255, 1);
     --color-black: rgba(10, 10, 10, 1);
+    --color-black-dark: rgba(23, 23, 23, 1);
     --color-base: rgba(249, 248, 244, 1);
     --color-primary: rgba(31, 31, 31, 1);
     --color-pink: rgba(255, 193, 235, 1);

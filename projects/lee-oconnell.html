@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="en">
+<head>
+
+    <!-- seo -->
+    <title>Jessica Rodgers</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- css -->
+	<link href="/src/assets/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+
+</head>
+
+<body x-cloak x-data="{ loaded : false, hideArrow : false, fadeIn : false }" class="transition-colors duration-1000 bg-black-dark" :class="{ 'overflow-hidden' : ! fadeIn }" x-init="setTimeout(() => { loaded = true; fadeIn = true }, 1000)">
+
+    <div class="absolute animate-spin z-[99999] mix-blend-difference hidden lg:block" @mousemove.document="
+        $el.style.left = $event.pageX + 'px';
+        $el.style.top = $event.pageY + 'px';
+    ">
+        
+        <figure><img src="/src/assets/images/icons/cursor-light.svg" class="block w-[19px] h-[19px] max-w-[unset]"></figure>
+
+    </div>
+
+    <div class="transition-all duration-500 delay-500" :class="{ 'translate-x-30' : ! fadeIn }">
+
+        <!-- <header role="banner" class="fixed top-0 right-0 w-full p-5 z-[99] max-w-fit transition-all duration-700 lg:p-12.5" :class="{ '-translate-y-30': hideArrow }">
+
+            <div class="wrap flex justify-end">
+
+                <a href="#work" class="block relative w-10 h-10 bg-base rounded-full border border-solid border-primary uppercase text-xl transition-all duration-500 hover:scale-[1.1]" :class="{ 'animate-bounce' : fadeIn }"><figure class="rotate-90 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"><img src="/src/assets/images/icons/internal.svg" class="block w-auto h-5"></figure></a>
+
+            </div>
+
+        </header> -->
+
+    </div>
+
+    <div class="transition-all duration-1000 delay-500" :class="{ 'opacity-0' : ! fadeIn }">
+
+        <section class="hero relative overflow-hidden">
+
+            <div class="wrap">
+
+                <div class="grid md:grid-cols-2">
+
+                    <div class="md:order-2">
+
+                        <figure><img src="/src/assets/images/work/lee-connell/hero-desktop.png"></figure>
+
+                    </div>
+
+                    <div class="md:order-1 lg:pt-12.5">
+
+                       <div class="text-base px-5 mb-12.5 last:mb-0 lg:px-12.5">
+
+                            <h2 class="text-2xl mb-1">no more <em>boring</em> portfolios</h2>
+
+                            <p class="text-sm max-w-[450px] lg:text-lg">a utilitarian, high-contrast visual showcase that bridges the gap between a technical resume and a personal brand.</p>
+
+                       </div> 
+
+                       <div class="text-base px-5 mb-12.5 last:mb-0 lg:px-12.5">
+
+                            <h2 class="text-2xl mb-1">speed <em>is</em> a design feature</h2>
+
+                            <p class="text-sm max-w-[450px] lg:text-lg">prioritising a light build to ensure near-instant load times serves as a testament to high-quality engineering, which can be felt in the user experience.</p>
+
+                       </div> 
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="device py-25">
+
+            <div class="wrap">
+
+                <div class="lg:hidden">
+
+                    <figure class="max-w-fit mx-auto"><img src="/src/assets/images/icons/laptop.svg" class="block w-full h-auto"></figure>
+
+                </div>
+
+                <div class="hidden lg:block">
+
+                    <figure class="max-w-fit mx-auto"><img src="/src/assets/images/icons/mobile.svg" class="block w-full h-auto max-h-[calc(100lvh-100px)]"></figure>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="social" class="w-full flex items-center justify-end p-5 mt-2.5 z-[9] md:fixed md:bottom-0 md:right-0 md:max-w-fit lg:p-12.5 lg:mt-0">
+
+            <div class="wrap">
+
+                <div class="flex items-center gap-3">
+
+                    <a href="https://www.linkedin.com/in/jessicaaaa/" class="text-[0px] group" aria-label="Go to LinkedIn"><figure class="transition-all duration-500 hover:scale-[1.15]"><img src="/src/assets/images/icons/linkedin-white.svg"></figure>LinkedIn</a>
+
+                    <a href="https://github.com/j-essica0" class="text-[0px] group" aria-label="Go to GitHub"><figure class="transition-all duration-500 hover:scale-[1.15]"><img src="/src/assets/images/icons/github-white.svg"></figure>GitHub</a>
+
+                    <a href="https://www.behance.net/j_essica" class="text-[0px] group" aria-label="Go to Behance"><figure class="transition-all duration-500 hover:scale-[1.15]"><img src="/src/assets/images/icons/behance-white.svg"></figure>Behance</a>
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+    <!-- scripts -->
+    <script type="module" src="/src/assets/js/site.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+</body>
+</html>
