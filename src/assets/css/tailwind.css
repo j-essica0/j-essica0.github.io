@@ -17,6 +17,14 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: "Source Serif Italic";
+    src: url('/src/assets/fonts/source_serif/SourceSerif.woff2') format('woff2'),
+         url('/src/assets/fonts/source_serif/SourceSerif.woff') format('woff');
+    font-weight: 400;
+    font-style: italic;
+}
+
 @theme {
     /* colours */
     --color-transparent: rgba(0, 0, 0, 0);
@@ -31,6 +39,7 @@
     /* fonts */
     --font-body: "Overused Grotesk Book";
     --font-black: "Overused Grotesk Black";
+    --font-italic: "Source Serif Italic";
 
     /* animations */
     --animate-attention: attention 3s ease-in-out infinite;

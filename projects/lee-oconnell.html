@@ -23,17 +23,17 @@
 
     </div>
 
-    <div class="transition-all duration-500 delay-500" :class="{ 'translate-x-30' : ! fadeIn }">
+    <div class="transition-all duration-500 delay-500" :class="{ '-translate-x-32' : ! fadeIn }">
 
-        <!-- <header role="banner" class="fixed top-0 right-0 w-full p-5 z-[99] max-w-fit transition-all duration-700 lg:p-12.5" :class="{ '-translate-y-30': hideArrow }">
+        <header role="banner" class="fixed top-0 left-0 w-full p-5 z-[99] max-w-fit transition-all duration-700 lg:p-[4.88vw] lg:pt-8 xl:pt-12.5" :class="{ '-translate-y-30': hideArrow }">
 
-            <div class="wrap flex justify-end">
+            <div class="wrap flex">
 
-                <a href="#work" class="block relative w-10 h-10 bg-base rounded-full border border-solid border-primary uppercase text-xl transition-all duration-500 hover:scale-[1.1]" :class="{ 'animate-bounce' : fadeIn }"><figure class="rotate-90 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"><img src="/src/assets/images/icons/internal.svg" class="block w-auto h-5"></figure></a>
+                <a href="/index.html" class="block relative w-10 h-10 bg-black-dark rounded-full border border-solid border-base uppercase text-xl transition-all duration-500 hover:scale-[1.1]"><figure class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"><img src="/src/assets/images/icons/white-arrow.svg" class="block w-auto h-5"></figure></a>
 
             </div>
 
-        </header> -->
+        </header>
 
     </div>
 
@@ -43,7 +43,7 @@
 
             <div class="wrap">
 
-                <div class="grid md:grid-cols-2">
+                <div class="grid md:grid-cols-2 md:items-center md:gap-x-5">
 
                     <div class="md:order-2">
 
@@ -53,19 +53,19 @@
 
                     <div class="md:order-1 lg:pt-12.5">
 
-                       <div class="text-base px-5 mb-12.5 last:mb-0 lg:px-12.5">
+                       <div class="text-base px-5 mb-12.5 last:mb-0 lg:px-[4.88vw]">
 
-                            <h2 class="text-2xl mb-1">no more <em>boring</em> portfolios</h2>
+                            <h2 class="text-2xl mb-1 lg:text-[clamp(1.5rem,2.34vw,2rem)]">no more <em class="font-italic">boring</em> portfolios</h2>
 
-                            <p class="text-sm max-w-[450px] lg:text-lg">a utilitarian, high-contrast visual showcase that bridges the gap between a technical resume and a personal brand.</p>
+                            <p class="text-sm max-w-[450px] lg:w-[43.95vw] lg:max-w-[605px] lg:text-[clamp(1.125rem,1.76vw,1.5rem)]">a utilitarian, high-contrast visual showcase that bridges the gap between a technical resume and a personal brand.</p>
 
                        </div> 
 
-                       <div class="text-base px-5 mb-12.5 last:mb-0 lg:px-12.5">
+                       <div class="text-base px-5 mb-12.5 last:mb-0 lg:px-[4.88vw]">
 
-                            <h2 class="text-2xl mb-1">speed <em>is</em> a design feature</h2>
+                            <h2 class="text-2xl mb-1 lg:text-[clamp(1.5rem,2.34vw,2rem)]">speed <em class="font-italic">is</em> a design feature</h2>
 
-                            <p class="text-sm max-w-[450px] lg:text-lg">prioritising a light build to ensure near-instant load times serves as a testament to high-quality engineering, which can be felt in the user experience.</p>
+                            <p class="text-sm max-w-[450px] lg:w-[43.95vw] lg:max-w-[605px] lg:text-[clamp(1.125rem,1.76vw,1.5rem)]">prioritising a light build to ensure near-instant load times serves as a testament to high-quality engineering, which can be felt in the user experience.</p>
 
                        </div> 
 
@@ -81,17 +81,35 @@
 
             <div class="wrap">
 
-                <div class="lg:hidden">
+                <a href="https://leeoconnell.co.uk">
 
-                    <figure class="max-w-fit mx-auto"><img src="/src/assets/images/icons/laptop.svg" class="block w-full h-auto"></figure>
+                    <div class="relative pointer-events-none lg:hidden">
 
-                </div>
+                        <figure class="px-5"><img src="/src/assets/images/icons/laptop.svg" class="block w-full h-auto"></figure>
 
-                <div class="hidden lg:block">
+                        <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center">
 
-                    <figure class="max-w-fit mx-auto"><img src="/src/assets/images/icons/mobile.svg" class="block w-full h-auto max-h-[calc(100lvh-100px)]"></figure>
+                            <iframe src="https://leeoconnell.co.uk" title="Lee O'Connell's Portfolio" class="block !w-[1024px] !h-[600px] min-w-[1024px] min-h-[600px] scale-[calc(21vw/320px)] md:scale-[calc(56vw/768px)]"></iframe>
 
-                </div>
+                        </div>
+
+                    </div>
+
+                    </div>
+
+                    <div class="hidden relative pointer-events-none lg:block">
+
+                        <figure><img src="/src/assets/images/icons/mobile.svg" class="block w-full h-auto max-h-[760px]"></figure>
+
+                        <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+
+                            <iframe src="https://leeoconnell.co.uk" title="Lee O'Connell's Portfolio" class="block h-[calc(100%-50px)] w-[325px] min-w-[325px] scale-[0.945]"></iframe>
+
+                        </div>
+
+                    </div>
+
+                </a>
 
             </div>
 
