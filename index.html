@@ -15,7 +15,7 @@
 
 </head>
 
-<body x-cloak x-data="{ loaded : true, hideArrow : false, door : false, houseWindow : false, fadeIn : true }" class="transition-colors duration-1000 bg-base" :class="{ 'bg-primary' : loaded, '!bg-base' : fadeIn, 'overflow-hidden' : ! fadeIn }">
+<body x-cloak x-data="{ loaded : false, hideArrow : false, door : false, houseWindow : false, fadeIn : false }" class="transition-colors duration-1000 bg-base" :class="{ 'bg-primary' : loaded, '!bg-base' : fadeIn, 'overflow-hidden' : ! fadeIn }">
 
     <div class="absolute animate-spin z-[99999] mix-blend-difference hidden lg:block" @mousemove.document="
         $el.style.left = $event.pageX + 'px';
