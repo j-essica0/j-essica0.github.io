@@ -15,7 +15,7 @@
 
 </head>
 
-<body x-cloak x-data="{ loaded : false, hideArrow : false, door : false, houseWindow : false, fadeIn : false }" class="transition-colors duration-1000 bg-base" :class="{ 'bg-primary' : loaded, '!bg-base' : fadeIn, 'overflow-hidden' : ! fadeIn }">
+<body x-cloak x-data="{ loaded : true, hideArrow : false, door : false, houseWindow : false, fadeIn : true }" class="transition-colors duration-1000 bg-base" :class="{ 'bg-primary' : loaded, '!bg-base' : fadeIn, 'overflow-hidden' : ! fadeIn }">
 
     <div class="absolute animate-spin z-[99999] mix-blend-difference hidden lg:block" @mousemove.document="
         $el.style.left = $event.pageX + 'px';
@@ -230,119 +230,6 @@
 
         </section>
 
-        <section id="work" x-data="{ filter : 'all' }" x-init="
-            $nextTick(() => {
-                let top = $el.getBoundingClientRect().top;
-                window.addEventListener('scroll', () => {
-                    if (window.scrollY + 50 >= top) {
-                        hideArrow = true;
-                    } else {
-                        hideArrow = false;
-                    }
-                });
-            });
-        ">
-
-            <div class="wrap">
-
-                <div class="filters flex whitespace-nowrap gap-5 items-center overflow-x-scroll overflow-y-hidden px-5 mb-5 lg:px-12.5 lg:mb-12.5">
-
-                    <button id="web" type="button" @click="filter = $el.id" class="block relative cursor-pointer w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Web</button>
-
-                    <button id="branding" type="button" @click="filter = $el.id" class="block relative cursor-pointer w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Digital</button>
-
-                    <!-- <button id="ux" type="button" @click="filter = $el.id" class="block relative cursor-pointer w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">UX</button> -->
-
-                    <!-- <button id="traditional" type="button" @click="filter = $el.id" class="block relative cursor-pointer w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Traditional</button> -->
-
-                    <button id="all" type="button" @click="filter = $el.id" x-show="filter != 'all'" x-transition.opacity.duration.300ms class="block relative w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500">
-
-                        <span class="block w-px h-5 bg-primary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-45"></span>
-
-                        <span class="block w-px h-5 bg-primary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-45"></span>
-
-                    </button>
-
-                </div>
-
-                <div class="swiper md:!px-5 lg:!px-12.5" x-init="new Swiper($el, {
-                    spaceBetween: 20,
-                    slidesOffsetBefore: 20,
-                    slidesOffsetAfter: 20,
-                    slidesPerView: 1.1,
-                    breakpoints: {
-                        768: {
-                            enabled: false,
-                            slidesPerView: 'auto',
-                            initialSlide: 0,
-                        },  
-                    },  
-                });">
-
-                    <div class="swiper-wrapper md:!transform-none md:!grid md:grid-cols-3 md:gap-5 2xl:grid-cols-4 min-[2000px]:!grid-cols-5">
-
-                        <div id="web" x-show="filter == $el.id || filter == 'all'" class="swiper-slide overflow-hidden">
-
-                            <div class="card bg-base p-5 border border-solid border-primary rounded-[25px] h-full">
-
-                                <div class="relative h-full">
-
-                                    <div class="image relative h-0 overflow-hidden pb-[100%] rounded-[15px] bg-primary"><figure><img src="/src/assets/images/thumbnails/thumbnail.svg" class="block w-full h-full absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 object-contain"></figure></div>
-
-                                    <div class="content mt-2.5 lg:mt-5">
-
-                                        <h2 class="text-3xl max-w-[235px] line-clamp-2 min-h-[72px]">Software Engineer Portfolio Site</h2>
-
-                                        <div class="flex flex-wrap items-end justify-between w-full gap-2.5 transition-all duration-500 pt-2.5 min-h-[94px] lg:pt-5 lg:min-h-[104px]">
-
-                                            <a href="https://leeoconnell.co.uk" class="flex pointer-events-auto items-center w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Visit<figure class="ml-2"><img src="src/assets/images/icons/external.svg" class="block w-auto h-[14px] min-w-[14px]"></figure></a>
-                                        
-                                            <a href="/projects/lee-oconnell.html" class="flex pointer-events-auto items-center w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Navigate<figure class="ml-2"><img src="src/assets/images/icons/internal.svg" class="block w-auto h-4 min-w-4"></figure></a>
-                                        
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div id="branding" x-show="filter == $el.id || filter == 'all'" class="swiper-slide overflow-hidden">
-
-                            <div class="card bg-base p-5 border border-solid border-primary rounded-[25px] h-full">
-
-                                <div class="relative h-full">
-
-                                    <div class="image relative h-0 overflow-hidden pb-[100%] rounded-[15px] bg-[rgb(51,0,255)]"><figure><img src="/src/assets/images/work/last-hat/white-girl.png" class="block w-full h-full max-w-[60%] absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 object-contain"></figure></div>
-
-                                    <div class="content mt-2.5 lg:mt-5">
-
-                                        <h2 class="text-3xl max-w-[235px] line-clamp-2 min-h-[72px]">Last Hat Caf&eacute; Branding</h2>
-
-                                        <div class="flex flex-wrap items-end justify-between w-full gap-2.5 transition-all duration-500 pt-2.5 min-h-[94px] lg:pt-5 lg:min-h-[104px]">
-                                        
-                                            <a href="/projects/last-hat.html" class="flex pointer-events-auto items-center w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Navigate<figure class="ml-2"><img src="src/assets/images/icons/internal.svg" class="block w-auto h-4 min-w-4"></figure></a>
-                                        
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
         <section id="about" class="px-5 py-20 overflow-hidden md:pt-12.5 md:pb-0 md:h-[calc(100svh)] lg:px-12.5">
 
             <div class="wrap max-w-[768px] mx-auto h-full">
@@ -526,6 +413,119 @@
                             <div class="relative">
 
                                 <p class="block w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Adobe Illustrator</p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="work" class="py-20 md:p-0 md:h-[calc(100svh)] md:flex md:items-center" x-data="{ filter : 'all' }" x-init="
+            $nextTick(() => {
+                let top = $el.getBoundingClientRect().top;
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY + 50 >= top) {
+                        hideArrow = true;
+                    } else {
+                        hideArrow = false;
+                    }
+                });
+            });
+        ">
+
+            <div class="wrap w-full">
+
+                <div class="filters flex whitespace-nowrap gap-5 items-center overflow-x-scroll overflow-y-hidden px-5 mb-5 lg:px-12.5 lg:mb-12.5">
+
+                    <button id="web" type="button" @click="filter = $el.id" class="block relative cursor-pointer w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Web</button>
+
+                    <button id="branding" type="button" @click="filter = $el.id" class="block relative cursor-pointer w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Digital</button>
+
+                    <!-- <button id="ux" type="button" @click="filter = $el.id" class="block relative cursor-pointer w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">UX</button> -->
+
+                    <!-- <button id="traditional" type="button" @click="filter = $el.id" class="block relative cursor-pointer w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Traditional</button> -->
+
+                    <button id="all" type="button" @click="filter = $el.id" x-show="filter != 'all'" x-transition.opacity.duration.300ms class="block relative w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500">
+
+                        <span class="block w-px h-5 bg-primary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-45"></span>
+
+                        <span class="block w-px h-5 bg-primary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-45"></span>
+
+                    </button>
+
+                </div>
+
+                <div class="swiper md:!px-5 lg:!px-12.5" x-init="new Swiper($el, {
+                    spaceBetween: 20,
+                    slidesOffsetBefore: 20,
+                    slidesOffsetAfter: 20,
+                    slidesPerView: 1.1,
+                    breakpoints: {
+                        768: {
+                            enabled: false,
+                            slidesPerView: 'auto',
+                            initialSlide: 0,
+                        },  
+                    },  
+                });">
+
+                    <div class="swiper-wrapper md:!transform-none md:!grid md:grid-cols-3 md:gap-5 2xl:grid-cols-4 min-[2000px]:!grid-cols-5">
+
+                        <div id="web" x-show="filter == $el.id || filter == 'all'" class="swiper-slide overflow-hidden">
+
+                            <div class="card bg-base p-5 border border-solid border-primary rounded-[25px] h-full">
+
+                                <div class="relative h-full">
+
+                                    <div class="image relative h-0 overflow-hidden pb-[100%] rounded-[15px] bg-primary"><figure><img src="/src/assets/images/thumbnails/thumbnail.svg" class="block w-full h-full absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 object-contain"></figure></div>
+
+                                    <div class="content mt-2.5 lg:mt-5">
+
+                                        <h2 class="text-3xl max-w-[235px] line-clamp-2 min-h-[72px]">Software Engineer Portfolio Site</h2>
+
+                                        <div class="flex flex-wrap items-end justify-between w-full gap-2.5 transition-all duration-500 pt-2.5 min-h-[94px] lg:pt-5 lg:min-h-[104px]">
+
+                                            <a href="https://leeoconnell.co.uk" class="flex pointer-events-auto items-center w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Visit<figure class="ml-2"><img src="src/assets/images/icons/external.svg" class="block w-auto h-[14px] min-w-[14px]"></figure></a>
+                                        
+                                            <a href="/projects/lee-oconnell.html" class="flex pointer-events-auto items-center w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Navigate<figure class="ml-2"><img src="src/assets/images/icons/internal.svg" class="block w-auto h-4 min-w-4"></figure></a>
+                                        
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div id="branding" x-show="filter == $el.id || filter == 'all'" class="swiper-slide overflow-hidden">
+
+                            <div class="card bg-base p-5 border border-solid border-primary rounded-[25px] h-full">
+
+                                <div class="relative h-full">
+
+                                    <div class="image relative h-0 overflow-hidden pb-[100%] rounded-[15px] bg-[rgb(51,0,255)]"><figure><img src="/src/assets/images/work/last-hat/white-girl.png" class="block w-full h-full max-w-[60%] absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 object-contain"></figure></div>
+
+                                    <div class="content mt-2.5 lg:mt-5">
+
+                                        <h2 class="text-3xl max-w-[235px] line-clamp-2 min-h-[72px]">Last Hat Caf&eacute; Branding</h2>
+
+                                        <div class="flex flex-wrap items-end justify-between w-full gap-2.5 transition-all duration-500 pt-2.5 min-h-[94px] lg:pt-5 lg:min-h-[104px]">
+                                        
+                                            <a href="/projects/last-hat.html" class="flex pointer-events-auto items-center w-full max-w-fit h-[37px] leading-[37px] bg-base rounded-full border border-solid border-primary px-5 uppercase text-xl transition-all duration-500 hover:px-6">Navigate<figure class="ml-2"><img src="src/assets/images/icons/internal.svg" class="block w-auto h-4 min-w-4"></figure></a>
+                                        
+                                        </div>
+
+                                    </div>
+
+                                </div>
 
                             </div>
 
