@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns#" lang="en">
+<head>
+
+    <!-- seo -->
+    <title>Jessica Rodgers</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png"/>
+
+    <!-- css -->
+	<link href="/src/assets/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+
+</head>
+
+<body x-cloak x-data="{ loaded : false, hideArrow : false, fadeIn : false }" class="transition-colors duration-1000 bg-offwhite" :class="{ 'overflow-hidden' : ! fadeIn }" x-init="setTimeout(() => { loaded = true; fadeIn = true }, 1000)">
+
+    <div class="absolute animate-spin z-[99999] mix-blend-difference hidden lg:block" @mousemove.document="
+        $el.style.left = $event.pageX + 'px';
+        $el.style.top = $event.pageY + 'px';
+    ">
+        
+        <figure><img src="/src/assets/images/icons/cursor-light.svg" class="block w-[19px] h-[19px] max-w-[unset]"></figure>
+
+    </div>
+
+    <div class="transition-all duration-500 delay-500" :class="{ '-translate-x-32' : ! fadeIn }">
+
+        <header role="banner" class="fixed top-0 left-0 w-full p-5 z-[99] max-w-fit transition-all duration-700 lg:p-[4.88vw] lg:pt-8 xl:pt-12.5" :class="{ '-translate-y-30': hideArrow }">
+
+            <div class="wrap flex">
+
+                <a href="/index.html" class="block relative w-10 h-10 rounded-full border border-solid border-black-dark bg-offwhite uppercase text-xl transition-all duration-500 hover:scale-[1.1]"><figure class="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -scale-x-100"><img src="/src/assets/images/icons/internal.svg" class="block w-auto h-5"></figure></a>
+
+            </div>
+
+        </header>
+
+    </div>
+
+    <div class="transition-all duration-1000 delay-500 pointer-events-none" :class="{ 'opacity-0' : ! fadeIn }">
+
+        <figure><img src="/src/assets/images/icons/squiggle.svg" class="block absolute top-0 left-0 w-[200vw] h-screen overflow-hidden object-cover"></figure>
+
+    </div>
+
+    <div class="transition-all duration-1000 delay-500" :class="{ 'opacity-0' : ! fadeIn }">
+
+        <section class="hero relative overflow-hidden pt-[53px] lg:pt-30 lg:h-[calc(100svh-120px)] lg:flex lg:items-center">
+
+            <div class="wrap w-full">
+
+                <div class="grid gap-y-10 md:grid-cols-2 md:items-center md:gap-x-5">
+
+                    <div class="md:order-2">
+
+                        <div class="relative hidden max-w-[600px] mx-auto lg:block">
+
+                            <figure class="animate-bob flex items-center justify-center w-[37px] h-[37px] bg-black-dark rounded-full border border-solid border-primary absolute bottom-10 left-1/2 -translate-x-1/2 z-9 transition-all duration-500"><img src="/src/assets/images/icons/white-arrow.svg" class="block w-auto h-5 rotate-270"></figure>
+
+                            <figure><img src="/src/assets/images/icons/laptop.svg" class="block w-full h-auto"></figure>
+
+                            <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+
+                                <figure class="relative overflow-scroll w-[77%] lg:h-[calc(100%-40px)] lg:-mt-[18px] lg:rounded-t-[22px]"><img src="/src/assets/images/work/therapy-site/therapy-site-desktop.svg" title="Therapy site desktop" class="block h-auto w-full absolute top-0 left-0"></figure>
+
+                            </div>
+
+                        </div>
+
+                        <div class="relative lg:hidden">
+
+                            <figure class="animate-bob flex items-center justify-center w-[37px] h-[37px] bg-black-dark rounded-full border border-solid border-primary absolute bottom-5 left-1/2 -translate-x-1/2 z-9 transition-all duration-500"><img src="/src/assets/images/icons/white-arrow.svg" class="block w-auto h-5 rotate-270"></figure>
+
+                            <figure><img src="/src/assets/images/icons/mobile.svg" class="block w-full h-auto max-h-[500px]"></figure>
+
+                            <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+
+                                <figure class="w-[227px] h-[calc(100%-14px)] relative overflow-scroll rounded-[28px]"><img src="/src/assets/images/work/therapy-site/therapy-site-mobile.svg" title="Therapy site mobile" class="block h-auto w-full absolute -top-[65px] left-0"></figure>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="md:order-1 lg:pt-12.5">
+
+                       <div class="text-black-dark px-5 mb-12.5 last:mb-0 lg:px-[4.88vw]">
+
+                            <h2 class="text-2xl mb-1 lg:text-[clamp(1.5rem,2.34vw,2rem)]">everything <em class="font-italic">earns</em> its place</h2>
+
+                            <p class="text-sm max-w-[450px] lg:w-[43.95vw] lg:max-w-[605px] lg:text-[clamp(1.125rem,1.76vw,1.5rem)]"> with no heavy frameworks or large images behind it. a small, fast page that gets straight to the point and makes it easy for people to get help.</p>
+
+                       </div> 
+
+                       <div class="text-black-dark px-5 mb-12.5 last:mb-0 lg:px-[4.88vw]">
+
+                            <h2 class="text-2xl mb-1 lg:text-[clamp(1.5rem,2.34vw,2rem)]">no <em class="font-italic">clinical</em> palette</h2>
+
+                            <p class="text-sm max-w-[450px] lg:w-[43.95vw] lg:max-w-[605px] lg:text-[clamp(1.125rem,1.76vw,1.5rem)]">soft green shapes, generous whitespace, an understated serif and slow fade-ins make the site feel like somewhere to settle.</p>
+
+                       </div> 
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="social" class="w-full flex items-center justify-end p-5 mt-2.5 z-[9] md:fixed md:bottom-0 md:right-0 md:max-w-fit lg:p-12.5 lg:mt-0">
+
+            <div class="wrap">
+
+                <div class="flex items-center gap-3">
+
+                    <a href="https://www.linkedin.com/in/jessicaaaa/" class="text-[0px] group" aria-label="Go to LinkedIn"><figure class="transition-all duration-500 hover:scale-[1.15]"><img src="/src/assets/images/icons/linkedin.svg"></figure>LinkedIn</a>
+
+                    <a href="https://github.com/j-essica0" class="text-[0px] group" aria-label="Go to GitHub"><figure class="transition-all duration-500 hover:scale-[1.15]"><img src="/src/assets/images/icons/github.svg"></figure>GitHub</a>
+
+                    <a href="https://www.behance.net/j_essica" class="text-[0px] group" aria-label="Go to Behance"><figure class="transition-all duration-500 hover:scale-[1.15]"><img src="/src/assets/images/icons/behance.svg"></figure>Behance</a>
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+    <!-- scripts -->
+    <script type="module" src="/src/assets/js/site.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+</body>
+</html>

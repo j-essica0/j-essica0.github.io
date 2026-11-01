@@ -35,6 +35,7 @@
     --color-primary: rgba(31, 31, 31, 1);
     --color-pink: rgba(255, 193, 235, 1);
     --color-blue: rgba(193, 242, 255, 1);
+    --color-offwhite: rgba(255, 253, 248, 1);
 
     /* fonts */
     --font-body: "Overused Grotesk Book";
@@ -45,6 +46,12 @@
     --animate-attention: attention 3s ease-in-out infinite;
     --animate-attention-alt: attention-alt 3s ease-in-out 0.5s infinite;
     --animate-burst: burst 3s ease-in-out 1s infinite;
+    --animate-bob: bob 2s ease-in-out infinite;
+
+    @keyframes bob {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-6px); }
+    }
 
     @keyframes attention {
         0% { transform: rotate(0deg); }
